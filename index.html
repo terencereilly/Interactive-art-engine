@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSG</title>
+   <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href=""> -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+   
+
+    <!-- Navigation -->
+    <header class="modern-header">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand space-grotesk-regular" href="#">
+                    <h1>BRAND</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <!-- <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Portfolio</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Licensing</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main | Body of Website -->
+    <main class="footer-spacer">
+
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- Hero Section -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+<!-- 
+    <div class="overlay-wellness-calm">
+    <h2 class="hero-heading">Messages To The Future</h2>
+    <h4 class="hero-sub-heading"><i>A browser-based artwork that remembers everyone's interactions over time. License & run your own exclusive copy of this evolving interactive artwork. Engage your visitors, 
+        create a living experience, and make your venue the only place to witness it.</i></h4>
+    <p class="hero-pitch">
+    </p>
+</div> -->
+
+  
+
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- iFrame Section -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <!-- gradient-wellness-warm -->
+        <div class="connect-artwork gradient-wellness-warm">
+            <h2 class="building-connections"></h2>
+            <p class="connect-paragraph paragraph"></p>
+            <br>
+        
+            <!-- <div class="connect-placeholder">Connect Embed Placeholder</div> -->
+        
+            <div class="iframe-container">
+                <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+                <iframe id="myIframe"
+                    src="https://msg-nu-ashen.vercel.app/"
+                    allow="fullscreen; autoplay; camera; microphone; accelerometer; gyroscope; magnetometer; xr-spatial-tracking" 
+                    allowfullscreen></iframe>
+            </div>
+        
+            <br>
+        
+            <p class="paragraph"></p>
+        
+        </div>
+
+       
+
+    <!-- Footer -->
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end align-items-center">
+                <a href="https://x.com/OltaArt" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-twitter social-icon"></i></a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-facebook social-icon"></i></a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-youtube social-icon"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/9fc19e8b68.js" crossorigin="anonymous"></script>
+
+   
+     <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- Encouraging Words Section -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+   <script>
+        function toggleFullscreen(btn) {
+            const iframe = document.getElementById('myIframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
+

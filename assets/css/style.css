@@ -1,0 +1,705 @@
+/* //////////////////////////////////////////////////////////////////////////// */
+/* FONTS Styles */
+/* //////////////////////////////////////////////////////////////////////////// */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap');
+
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* CSS Variables */
+/* //////////////////////////////////////////////////////////////////////////// */
+:root {
+    --primary-font: 'Space Grotesk', sans-serif;
+    --secondary-font: 'Inter', sans-serif;
+    --primary-color: #1a1a1a;
+    --secondary-color: #666666;
+    
+    /* Vibrant Gradient Color Palette */
+    --bg-light-top: #e8f4f8;
+    --bg-light-bottom: #fef9e7;
+    --gradient-blue: #4a90e2;
+    --gradient-purple: #9b59b6;
+    --gradient-cyan: #1abc9c;
+    --gradient-teal: #16a085;
+    --gradient-magenta: #e91e63;
+    --gradient-fuchsia: #c0392b;
+    --gradient-pink: #ff6b9d;
+    --gradient-red: #e74c3c;
+    --gradient-yellow: #f39c12;
+    --gradient-orange: #ff5722;
+    --text-light: rgba(255, 255, 255, 0.95);
+    --text-dark: #2c3e50;
+}
+
+/* Global Styles */
+body {
+    font-family: var(--secondary-font);
+    color: var(--text-dark);
+    background: linear-gradient(180deg, var(--bg-light-top) 0%, var(--bg-light-bottom) 100%);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Grainy Texture Overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.03) 3px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.03) 3px
+        );
+    background-size: 4px 4px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/* Additional noise texture */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* h1 {
+    font-family: var(--primary-font); 
+    color: var(--primary-color);
+}  */
+
+/* Global Styles */
+/* h2, h3, h4, h5, h6 {
+    font-family: var(--secondary-font); 
+    background-color: yellow;
+    color: var(--secondary-color);
+}  */
+
+/* .space-grotesk-regular {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.inter-regular {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-regular {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}  */
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Header Styles */
+/* //////////////////////////////////////////////////////////////////////////// */
+.modern-header {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modern-header .navbar {
+    padding: 1.5rem 0;
+    background: transparent !important;
+}
+
+.modern-header .navbar-brand h1 {
+    color: var(--text-dark) !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--gradient-blue) 0%, var(--gradient-purple) 50%, var(--gradient-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.studio-logo {
+    font-family: var(--primary-font);
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #218de6 0%, #ff006e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+}
+
+.modern-header .navbar-nav {
+    gap: 2rem;
+}
+
+.modern-header .nav-link {
+    font-family: var(--secondary-font);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark) !important;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.modern-header .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gradient-pink), var(--gradient-orange));
+    transition: width 0.3s ease;
+}
+
+.modern-header .nav-link:hover {
+    color: var(--gradient-pink) !important;
+}
+
+.modern-header .nav-link:hover::after {
+    width: 100%;
+}
+
+.modern-header .nav-link.active {
+    color: var(--gradient-pink) !important;
+}
+
+.modern-header .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2844, 62, 80, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.modern-header .navbar-toggler {
+    border: 1px solid rgba(44, 62, 80, 0.2);
+    box-shadow: none;
+}
+
+.modern-header .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 157, 0.25);
+    border-color: rgba(44, 62, 80, 0.2);
+}
+
+.modern-header .navbar-toggler {
+    border-color: rgba(44, 62, 80, 0.2);
+}
+
+.modern-header .bg-body-tertiary {
+    background-color: transparent !important;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Wellness Gradient Utilities */
+/* //////////////////////////////////////////////////////////////////////////// */
+
+/* Vibrant iframe container */
+.gradient-wellness-warm {
+    width: 100%;
+    min-height: 50vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, 
+        rgba(74, 144, 226, 0.05) 0%,
+        rgba(155, 89, 182, 0.05) 25%,
+        rgba(26, 188, 156, 0.05) 50%,
+        rgba(255, 107, 157, 0.05) 75%,
+        rgba(255, 87, 34, 0.05) 100%
+    );
+    padding: 80px 40px;
+    z-index: 2;
+}
+
+
+
+
+
+/* Vibrant hero section */
+.overlay-wellness-calm {
+    width: 100%;
+    min-height: 15vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 60px 20px;
+    z-index: 2;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Gradient Text Classes */
+/* //////////////////////////////////////////////////////////////////////////// */
+.gradient-text-warm {
+    background: linear-gradient(180deg, #78777a 0%, #0be0d1 50%, #f0e10c 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 25vh;
+    padding: 50px;
+}
+
+
+
+/* Card Buttons - testing */
+
+.gradient-buttons {
+    background: linear-gradient(180deg, #78777a 0%, #0be0d1 50%, #f0e10c 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Main Body CSS Styles */
+/* //////////////////////////////////////////////////////////////////////////// */
+.footer-spacer {
+    min-height: 95vh;
+    position: relative;
+    z-index: 2;
+    /* Adjust this value based on the footer height */
+}
+
+.card {
+    /* width: 24rem; */
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    padding: 16px;
+    background-color: #fff;
+    /* transition: transform 0.2s; */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-padded {
+    padding: 60px;
+    margin-top: 20px;
+}
+
+.hero {
+    width: 100wh;
+    min-height: 30vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Note find a better way to make this min-height value responsive */
+    /* min-height: 400px;  */
+    /* background: linear-gradient(to bottom, #218de6, #F7FAFF); */
+    background: linear-gradient(135deg, #218de6 0%, #ff006e 100%);
+}
+
+/* Positioning Context: Any child elements with position: absolute; will be positioned relative 
+to .hero instead of the nearest positioned ancestor or the document body.Since you don't have any 
+position: absolute; children visible in your code, the position: relative; is likely there 
+as a preparation for future child elements that might need absolute positioning. 
+It's a common pattern when you plan to overlay or position elements on top of the hero section. */
+
+.hero-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gradient-blue) 0%, var(--gradient-purple) 25%, var(--gradient-cyan) 50%, var(--gradient-pink) 75%, var(--gradient-orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    padding: 10px 20px 5px 20px;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+
+.hero-sub-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    text-align: center;
+    padding: 0 20px 10px 20px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    margin-top: 0;
+}
+
+.building-connections {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    /* width: 100wh;
+    min-height: 30vh; */
+    color: rgb(9, 109, 107);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+/* wip */
+.footer-sub-heading {
+    font-family: 'Inter', sans-serif;
+    /* font-size: 20px; */
+    /* color: white;  */
+    color: #8fa8a8;
+    text-align: center;
+    /* margin-top: 10px; */
+    margin-bottom: 80px;
+    padding: 0 40px;
+}
+
+
+/* wip */
+.footer-supporting {
+    font-family: 'Inter', sans-serif;
+    opacity: 0.5;
+    /* font-size: 20px; */
+    /* color: white;  */
+    color: #8fa8a8;
+    text-align: center;
+    /* margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 40px; */
+
+}
+
+
+
+
+
+/* NOTE: If change to section (not .section) it affects all parts in the codebase with the element<section>  */
+/* section {
+    padding: 80px 80px;
+} */
+
+.hero-background {
+    width: 100%;
+    min-height: 20vh;
+    background: linear-gradient(135deg, #f0f4ff 0%, #fce7f3 50%, #f0fdfa 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    /* overflow: hidden; */
+}
+
+/* Add geometric pattern overlay using background patterns */
+.signs-of-stress {
+    width: 100%;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: radial-gradient(circle at 20% 80%, rgba(116, 82, 196, 0.08) 0%, transparent 50%);
+}
+
+/* Add geometric pattern overlay using background patterns */
+.signs {
+    /* width: 100%; */
+    height: 300px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 35%, #ec4899 65%, #10b981 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    border-radius: 2px;
+}
+
+
+/* .signs-of-stress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+       background: linear-gradient(135deg, #3e93bd 5%, #a89ba2 20%, #3cc2a2 10%);
+} */
+
+.paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.building-connections {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gradient-blue) 0%, var(--gradient-purple) 50%, var(--gradient-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+}
+
+
+.divider-1 {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #218de6, transparent);
+    border: none;
+    margin: 40px 0;
+}
+
+.divider-2 {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff006e, transparent);
+    border: none;
+    margin: 40px 0;
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
+}
+
+
+.divider-3 {
+    height: 4px;
+    background: linear-gradient(90deg, #218de6 0%, #ff006e 50%, #fbbf24 100%);
+    border: none;
+    margin: 20px 0;
+    border-radius: 2px;
+}
+
+.divider-4 {
+    height: 100px;
+    background: linear-gradient(90deg, #218de6 0%, #da1c62 50%, #fbbf24 100%);
+    border: none;
+    margin: 0px 0;
+    border-radius: 2px;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* iFrame Section */
+/* //////////////////////////////////////////////////////////////////////////// */
+.connect-artwork {
+    text-align: center;
+    padding: 60px 40px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1400px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* original placeholder for iframe linked to text called 'Placeholder Text'*/
+/* .connect-placeholder {
+    width: 100%;
+    min-height: 50vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+    font-size: 30px;
+} */
+
+iframe {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: var(--text-dark);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+    /* Hidden by default */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fullscreen-btn:hover {
+    background: linear-gradient(135deg, var(--gradient-pink), var(--gradient-orange));
+    color: white;
+    border-color: transparent;
+    transform: scale(1.05);
+}
+
+/* Show button on desktop only */
+@media (min-width: 400px) {
+    .fullscreen-btn {
+        display: block;
+    }
+}
+
+.fullscreen-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Footer Styles */
+/* //////////////////////////////////////////////////////////////////////////// */
+footer {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 10px 20px !important;
+    min-height: auto;
+}
+
+footer .row {
+    margin: 0;
+    padding: 0;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Social Icons - Hover Effects */
+/* //////////////////////////////////////////////////////////////////////////// */
+.social-link {
+    display: inline-block;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.social-icon {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--text-dark) !important;
+    font-size: 18px;
+}
+
+.social-icon:hover,
+.social-icon:active {
+    transform: scale(1.2);
+    background: linear-gradient(135deg, var(--gradient-pink), var(--gradient-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.social-icon:active {
+    transform: scale(1.25);
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Temporary debugging - shows all elements */
+/* //////////////////////////////////////////////////////////////////////////// */
+/* * {
+    border: 1px solid rgba(234, 149, 12, 0.7);
+} */
+
+/* Temporary debugging */
+/* section#reasons {
+    border: 3px solid blue;
+    background-color: rgba(0, 0, 255, 0.1);
+}
+
+#benefits {
+    border: 3px solid green;
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+#benefits > div {
+    border: 2px solid orange;
+    background-color: rgba(255, 165, 0, 0.1);
+}
+
+#benefits > div:empty {
+    border: 2px dashed red;
+    min-height: 50px;
+} */
