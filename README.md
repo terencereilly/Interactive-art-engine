@@ -226,5 +226,38 @@ Configure `.env` for API keys, database credentials, and environment variables.
 
 ---
 
+### What this shows for your MVP:
 
+- **Backend (Django):**  
+  - ArtworkInstance model  
+  - License & Version metadata  
+  - Admin API endpoints for creating/viewing instances  
+
+- **Frontend:**  
+  - 3D canvas + message input  
+  - Apply version-specific moderation logic  
+  - Fetch instance config from Django  
+
+- **Firestore:**  
+  - Persistent messages stored per instance `<UUID>`  
+  - Each new instance gets its own collection  
+
+- **Out-of-scope / Future:**  
+  - Multi-tenant orchestration  
+  - AI moderation  
+  - Marketplace / multiple artworks  
+
+---
+
+## MVP Architecture: Single-Instance Artwork per Company
+
+
+This diagram shows how multiple companies can each have **one active artwork instance** with its own **Firestore collection**.
+
+![Architecture Diagram](assets/images/Archtiecture.png)
+
+- Each company logs in as an admin
+- Generates a unique artwork instance URL
+- A Firestore collection is created per instance
+- Only **one active instance per company** at a time
 
