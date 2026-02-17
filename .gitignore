@@ -3,3 +3,8 @@
 
 # Environment variables
 .env
+
+# Django Compiled Python Files 
+db.sqlite3
+__pycache__/
+*.pyc
