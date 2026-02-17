@@ -1,7 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
-
+# Create your tests here
 # 
 #  FirestoreIntegrationTests
 #
@@ -18,20 +17,6 @@ from django.test import TestCase
 # python manage.py test artworks.FirestoreIntegrationTest.test_firestore_write_and_read
 # 
 class FirestoreIntegrationTest(TestCase):
-      def test_create_new_collection(self):
-         # Create a new collection and add a document
-         new_collection = "new_test_collection"
-         doc_id = "first_doc"
-         doc_ref = self.firestore_client.collection(new_collection).document(doc_id)
-         doc_data = {"message": "This is a new collection!", "user": "tester"}
-         doc_ref.set(doc_data)
-
-         # Read the document back
-         doc = doc_ref.get()
-         data = doc.to_dict()
-         self.assertIsNotNone(data)
-         self.assertEqual(data["message"], "This is a new collection!")
-         self.assertEqual(data["user"], "tester")
    @classmethod
    def setUpClass(cls):
       super().setUpClass()
@@ -41,6 +26,21 @@ class FirestoreIntegrationTest(TestCase):
          cred = credentials.Certificate(FIREBASE_CRED_PATH)
          firebase_admin.initialize_app(cred)
       cls.firestore_client = firestore.client()
+
+   def test_create_new_collection(self):
+      # Create a new collection and add a document
+      new_collection = "new_test_collection"
+      doc_id = "first_doc"
+      doc_ref = self.firestore_client.collection(new_collection).document(doc_id)
+      doc_data = {"message": "This is a new collection!", "user": "tester"}
+      doc_ref.set(doc_data)
+
+      # Read the document back
+      doc = doc_ref.get()
+      data = doc.to_dict()
+      self.assertIsNotNone(data)
+      self.assertEqual(data["message"], "This is a new collection!")
+      self.assertEqual(data["user"], "tester")
 
    def test_firestore_write_and_read(self):
       doc_ref = self.firestore_client.collection("test_collection").document("test_doc")
