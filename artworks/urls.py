@@ -1,6 +1,6 @@
 from django.urls import path
-# Add your artworks views here as needed
+from . import views
 
 urlpatterns = [
-    # Example: path('someview/', views.someview, name='someview'),
+    path("versions/", views.versions, name="versions"),
 ]

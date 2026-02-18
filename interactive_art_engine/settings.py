@@ -136,4 +136,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Redirect users to homepage after login
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/artworks/versions/"
