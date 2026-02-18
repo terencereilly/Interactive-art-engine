@@ -8,7 +8,7 @@
                 <div class="card-header">Artwork 1A</div>
                 <div class="card-body">
                     <iframe src="https://msg-nu-ashen.vercel.app/?template=1A" style="width:100%;height:300px;border:none;"></iframe>
-                    <a href="#" class="btn btn-primary mt-3 disabled">Select Version A</a>
+                    <a href="{% url 'create_instance' %}?template=1A" class="btn btn-success mt-3">Get License for Version A</a>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <div class="card-header">Artwork 1B</div>
                 <div class="card-body">
                     <iframe src="https://msg-nu-ashen.vercel.app/?template=1B" style="width:100%;height:300px;border:none;"></iframe>
-                    <a href="#" class="btn btn-primary mt-3 disabled">Select Version B</a>
+                    <a href="{% url 'create_instance' %}?template=1B" class="btn btn-success mt-3">Get License for Version B</a>
                 </div>
             </div>
         </div>
