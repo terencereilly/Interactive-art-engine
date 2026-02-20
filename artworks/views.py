@@ -69,7 +69,25 @@ def create_instance(request):
 
 
 # Instance detail view (for iframe page)
+
+import json
+from django.utils.safestring import mark_safe
+
 @login_required
 def artwork_instance(request, uuid):
     instance = get_object_or_404(ArtworkInstance, firestore_collection_id=uuid, user=request.user)
-    return render(request, "artwork_instance.html", {"instance": instance})
+    # Prepare instance data for frontend (JSON serializable)
+    instance_data = {
+        "firestore_collection_id": f"messages_{instance.firestore_collection_id}",
+        "template": instance.template.title,
+        "version": instance.version,
+        "licenseValid": instance.is_license_valid(),
+        "expiresAt": instance.expiration_date().isoformat(),
+        "duration_days": instance.duration_days,
+        "start_date": instance.start_date.isoformat(),
+        "is_active": instance.is_active,
+    }
+    return render(request, "artwork_instance.html", {
+        "instance": instance,
+        "instance_data_json": mark_safe(json.dumps(instance_data)),
+    })
