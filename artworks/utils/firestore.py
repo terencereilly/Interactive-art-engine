@@ -23,6 +23,8 @@ def create_firestore_instance_collection(uuid, expires_at):
     license_doc = db.collection(collection_name).document("license")
     license_doc.set({
         "licenseValid": True,
-        "expiresAt": firestore.Timestamp.from_datetime(expires_at),
+        "expiresAt": expires_at,
     })
+    # Create a dummy document to ensure collection exists for reads
+    db.collection(collection_name).document("init").set({"init": True})
     return collection_name

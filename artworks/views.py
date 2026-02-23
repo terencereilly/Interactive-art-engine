@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.crypto import get_random_string
 from .forms import CreateInstanceForm
 from .models import ArtworkTemplate, ArtworkInstance
+from .utils.firestore import create_firestore_instance_collection
 from django.contrib.auth.models import User
 
 
@@ -60,6 +61,8 @@ def create_instance(request):
                         duration_days=duration_days,
                         is_active=True
                     )
+                    # Create Firestore collection and documents
+                    create_firestore_instance_collection(collection_id, instance.expiration_date())
                     return redirect("artwork_instance", uuid=collection_id)
         else:
             error_message = "Please correct the errors below."
@@ -69,7 +72,6 @@ def create_instance(request):
 
 
 # Instance detail view (for iframe page)
-
 import json
 from django.utils.safestring import mark_safe
 
