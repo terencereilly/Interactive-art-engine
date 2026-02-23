@@ -1,8 +1,7 @@
-# Postgres driver for Django
+Django
 psycopg2-binary
 firebase-admin
 python-dotenv
 gunicorn
 dj-database-url
 whitenoise
-Django
