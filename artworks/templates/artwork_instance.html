@@ -18,6 +18,11 @@
     </div>
     <!-- Pass instance data to frontend as JSON -->
     <script id="instance-data" type="application/json">{{ instance_data_json|safe }}</script>
+    <script>
+        window.instanceData = JSON.parse(
+            document.getElementById('instance-data').textContent
+        );
+    </script>
 </div>
 {% endblock %}
 
