@@ -52,13 +52,15 @@ def create_instance(request):
                 else:
                     # Generate unique Firestore collection ID
                     collection_id = get_random_string(16)
+                    from django.utils import timezone  # Ensure timezone is imported
                     instance = ArtworkInstance.objects.create(
                         template=template_obj,
                         user=request.user,
                         version=template_version,
                         firestore_collection_id=collection_id,
                         duration_days=duration_days,
-                        is_active=True
+                        is_active=True,
+                        start_date=timezone.now()
                     )
                     return redirect("artwork_instance", uuid=collection_id)
         else:
@@ -87,6 +89,11 @@ def artwork_instance(request, uuid):
         "start_date": instance.start_date.isoformat(),
         "is_active": instance.is_active,
     }
+    # Debug print and assertions
+    print("[DEBUG] licenseValid:", instance_data["licenseValid"])
+    print("[DEBUG] expiresAt:", instance_data["expiresAt"])
+    assert instance_data["licenseValid"] is True, "licenseValid must be True for licensed instances"
+    assert isinstance(instance_data["expiresAt"], str) and instance_data["expiresAt"], "expiresAt must be a non-empty string"
     return render(request, "artwork_instance.html", {
         "instance": instance,
         "instance_data_json": mark_safe(json.dumps(instance_data)),
