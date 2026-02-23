@@ -219,6 +219,14 @@ class Meta:
     ]
 ```
 
+<!-- ArtworkInstance → User (many-to-one)
+Many artwork instances can belong to one user.
+Each instance is owned by exactly one user.
+
+ArtworkInstance → ArtworkTemplate (many-to-one)
+Many artwork instances can be based on one template.
+Each instance is created from exactly one template. -->
+
 ### Conceptual Flow in Your Architecture
 
 - **ArtworkTemplate** = master blueprint (public version)
