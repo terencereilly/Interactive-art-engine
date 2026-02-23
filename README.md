@@ -1,4 +1,5 @@
-# Messages to the Future / Interactive Art Engine
+
+# Interactive Art Engine
 
 A modern, multi-tenant interactive web platform for submitting and displaying messages in immersive digital environments. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
 
@@ -61,6 +62,9 @@ A modern, multi-tenant interactive web platform for submitting and displaying me
 
 ---
 
+
+
+
 ## System Architecture
 
 ### Layered Structure
@@ -91,6 +95,22 @@ graph TD
 * **Version** – Defines logic, rules, moderation
 * **ArtworkInstance** – Isolated deployment per venue
 * **License** – Start/end dates and status
+
+---
+
+## Technical Summary
+
+**Backend:** Django project with apps for artwork templates and licensed instances. Handles user authentication, instance creation, and serves dynamic templates.
+
+**Database:** Uses Firestore for persistent storage of messages per artwork instance, with license-based Firestore rules.
+
+**Frontend:** Artwork UI (React/Three.js) is embedded via iframe; uses FirestoreOlta.js for Firestore integration or browser localStorage for demo mode.
+
+**Integration:** Instance data (license, collection ID, etc.) is passed from Django to the frontend via template-injected JavaScript.
+
+**Security:** Firestore rules enforce write access only for valid, active licenses; demo mode never writes to Firestore.
+
+**Deployment:** Frontend demo is hosted on Vercel; backend runs locally and on Heroku.
 
 ---
 
