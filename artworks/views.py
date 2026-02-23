@@ -52,15 +52,13 @@ def create_instance(request):
                 else:
                     # Generate unique Firestore collection ID
                     collection_id = get_random_string(16)
-                    from django.utils import timezone  # Ensure timezone is imported
                     instance = ArtworkInstance.objects.create(
                         template=template_obj,
                         user=request.user,
                         version=template_version,
                         firestore_collection_id=collection_id,
                         duration_days=duration_days,
-                        is_active=True,
-                        start_date=timezone.now()
+                        is_active=True
                     )
                     return redirect("artwork_instance", uuid=collection_id)
         else:
