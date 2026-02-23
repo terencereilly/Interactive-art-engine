@@ -1,4 +1,3 @@
-
 # Interactive Art Engine
 
 A modern, multi-tenant interactive web platform for submitting and displaying messages in immersive digital environments. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
@@ -62,9 +61,6 @@ A modern, multi-tenant interactive web platform for submitting and displaying me
 
 ---
 
-
-
-
 ## System Architecture
 
 ### Layered Structure
@@ -72,6 +68,22 @@ A modern, multi-tenant interactive web platform for submitting and displaying me
 * **Control Layer (Django)** – Authentication, licensing, multi-tenant orchestration
 * **Memory Layer (Firestore)** – Persistent state per instance, real-time updates
 * **Experience Layer (React + Three.js)** – 3D rendering, user interactions, versioned logic
+
+---
+
+## Technical Summary
+
+**Backend:** Django project with apps for artwork templates and licensed instances. Handles user authentication, instance creation, and serves dynamic templates.
+
+**Database:** Uses Firestore for persistent storage of messages per artwork instance, with license-based Firestore rules.
+
+**Frontend:** Artwork UI (React/Three.js) is embedded via iframe; uses FirestoreOlta.js for Firestore integration or browser localStorage for demo mode.
+
+**Integration:** Instance data (license, collection ID, etc.) is passed from Django to the frontend via template-injected JavaScript.
+
+**Security:** Firestore rules enforce write access only for valid, active licenses; demo mode never writes to Firestore.
+
+**Deployment:** Frontend demo is hosted on Vercel; backend runs locally and on Heroku.
 
 ### Mermaid Diagram
 
@@ -98,19 +110,128 @@ graph TD
 
 ---
 
-## Technical Summary
+## Django Relationship Database Design
 
-**Backend:** Django project with apps for artwork templates and licensed instances. Handles user authentication, instance creation, and serves dynamic templates.
+- **User**: Each user can create 1 artwork instance of each artwork version.
+- **ArtworkTemplate**: Defines a version/type of artwork (e.g., “Artwork 1A”).
+- **ArtworkInstance**: Represents a user’s licensed copy of an artwork.  
+  - Each instance is linked to one user and one artwork template.
+  - Each instance has a unique Firestore collection for its messages.
+- **Relationships**:
+  - `ArtworkInstance` has a foreign key to `User` (many-to-one).
+  - `ArtworkInstance` has a foreign key to `ArtworkTemplate` (many-to-one).
 
-**Database:** Uses Firestore for persistent storage of messages per artwork instance, with license-based Firestore rules.
+**Summary:**  
+Users own many instances; each instance is based on a template and stores its messages in a unique Firestore collection.
 
-**Frontend:** Artwork UI (React/Three.js) is embedded via iframe; uses FirestoreOlta.js for Firestore integration or browser localStorage for demo mode.
+---
 
-**Integration:** Instance data (license, collection ID, etc.) is passed from Django to the frontend via template-injected JavaScript.
+## Django Database Table Design
 
-**Security:** Firestore rules enforce write access only for valid, active licenses; demo mode never writes to Firestore.
+### 1. User (Django’s built-in auth_user)
 
-**Deployment:** Frontend demo is hosted on Vercel; backend runs locally and on Heroku.
+| Field         | Description                |
+|-------------- |---------------------------|
+| id (PK)       | Primary key               |
+| username      | Username                  |
+| email         | Email address             |
+| password      | Hashed password           |
+| date_joined   | Account creation date     |
+| ...           | Other default fields      |
+
+One user can own multiple artwork instances. Uses Django’s default `AbstractUser`.
+
+### 2. ArtworkTemplate
+
+Represents a version/type of artwork (e.g., “Artwork 1A”).
+
+| Field         | Description                        |
+|-------------- |-----------------------------------|
+| id (PK)       | Primary key                       |
+| name          | Artwork name                      |
+| version_code  | Version code (e.g., v1a)          |
+| description   | Description                       |
+| created_at    | Creation timestamp                |
+| is_active     | Is template active?               |
+
+Example row:
+
+`1 | Artwork 1A | v1a | Generative participatory piece | 2026-01-01 | True`
+
+One template can have many user instances.
+
+### 3. ArtworkInstance
+
+Represents a licensed copy owned by a specific user.
+
+| Field                      | Description                                 |
+|--------------------------- |--------------------------------------------|
+| id (PK)                    | Primary key                                |
+| user_id (FK → User.id)     | Foreign key to User                        |
+| artwork_template_id (FK)   | Foreign key to ArtworkTemplate             |
+| firestore_collection_name  | Unique Firestore collection for messages   |
+| license_start_date         | License start date                         |
+| license_end_date           | License end date                           |
+| is_active                  | Is license active?                         |
+| created_at                 | Instance creation timestamp                |
+
+Example row:
+
+`15 | 3 | 1 | messages_user3_v1a_15 | 2026-02-01 | 2026-03-01 | True | 2026-02-01`
+
+### Relationship Diagram (Text ERD)
+
+```
+User
+  └── 1 ────────────────┐
+                         │
+                    ArtworkInstance
+                         │
+  ArtworkTemplate ── 1 ──┘
+```
+
+More explicitly:
+
+`User (1) -------- (∞) ArtworkInstance (∞) -------- (1) ArtworkTemplate`
+
+- A User can have many ArtworkInstances.
+- An ArtworkTemplate can have many ArtworkInstances.
+- Each ArtworkInstance belongs to exactly:
+  - One User
+  - One ArtworkTemplate
+
+### Important Constraint (Your Business Rule)
+
+Each user can create **1 artwork instance of each artwork version**.
+
+Add a unique constraint:
+
+`UNIQUE (user_id, artwork_template_id)`
+
+In Django:
+```python
+class Meta:
+    constraints = [
+        models.UniqueConstraint(
+            fields=['user', 'artwork_template'],
+            name='unique_user_template_instance'
+        )
+    ]
+```
+
+### Conceptual Flow in Your Architecture
+
+- **ArtworkTemplate** = master blueprint (public version)
+- **ArtworkInstance** = licensed, isolated copy
+- **firestore_collection_name** = unique persistent message store
+
+**Django handles:**
+- Authentication
+- Instance creation
+- License enforcement
+
+**Firestore handles:**
+- Persistent live messages
 
 ---
 
