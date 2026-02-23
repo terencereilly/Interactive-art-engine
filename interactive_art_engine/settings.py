@@ -1,3 +1,12 @@
+import dj_database_url
+# ...existing code...
+
+# --- Heroku Postgres database configuration ---
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
+}
 # --- Robust console logging for Heroku error debugging ---
 import sys
 LOGGING = {
