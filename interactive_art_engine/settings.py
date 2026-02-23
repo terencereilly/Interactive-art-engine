@@ -23,11 +23,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- Firebase/Firestore Configuration ---
 load_dotenv()
-FIREBASE_CRED_PATH = os.getenv("FIREBASE_CRED_PATH")
-if FIREBASE_CRED_PATH and not firebase_admin._apps:
-    cred = credentials.Certificate(FIREBASE_CRED_PATH)
-    firebase_admin.initialize_app(cred)
-firestore_client = firestore.client()
+# Utility function to initialize and get Firestore client at runtime
+def get_firestore_client():
+    import firebase_admin
+    from firebase_admin import credentials, firestore
+    FIREBASE_CRED_JSON = os.getenv("FIREBASE_CRED_JSON")
+    if FIREBASE_CRED_JSON:
+        cred_path = "/app/firebase_credentials.json"
+        if not os.path.exists(cred_path):
+            with open(cred_path, "w") as f:
+                f.write(FIREBASE_CRED_JSON)
+        FIREBASE_CRED_PATH = cred_path
+    else:
+        FIREBASE_CRED_PATH = os.getenv("FIREBASE_CRED_PATH")
+    if FIREBASE_CRED_PATH and not firebase_admin._apps:
+        cred = credentials.Certificate(FIREBASE_CRED_PATH)
+        firebase_admin.initialize_app(cred)
+    return firestore.client()
 
 
 # Quick-start development settings - unsuitable for production

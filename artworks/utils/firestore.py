@@ -1,14 +1,6 @@
-import os
-import firebase_admin
-from firebase_admin import credentials, firestore
+
 from django.utils import timezone
-
-# Initialize Firebase Admin SDK (only once)
-if not firebase_admin._apps:
-    cred = credentials.Certificate(os.environ.get('FIREBASE_CREDENTIALS_PATH'))
-    firebase_admin.initialize_app(cred)
-
-db = firestore.client()
+from interactive_art_engine.settings import get_firestore_client
 
 def create_firestore_instance_collection(uuid, expires_at):
     """
@@ -18,6 +10,7 @@ def create_firestore_instance_collection(uuid, expires_at):
       - licenseValid: true
       - expiresAt: <timestamp>
     """
+    db = get_firestore_client()
     collection_name = f"messages_{uuid}"
     # Store license metadata in a special document
     license_doc = db.collection(collection_name).document("license")
