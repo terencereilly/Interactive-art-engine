@@ -1,3 +1,5 @@
+# Postgres driver for Django
+psycopg2-binary
 firebase-admin
 python-dotenv
 gunicorn
