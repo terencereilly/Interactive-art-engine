@@ -34,12 +34,9 @@ firestore_client = firestore.client()
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lzwu5igpjh@m@atm31nynkxu-$tpc4#*n$83)#g%&al=1n##_&'
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-insecure-key')
 import dj_database_url
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'false'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '.herokuapp.com').split(',')
 
 
