@@ -8,3 +8,6 @@
 db.sqlite3
 __pycache__/
 *.pyc
+
+# Ignore Heroku deployment guide
+HEROKU_DEPLOYMENT.md
