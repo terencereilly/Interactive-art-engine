@@ -76,6 +76,13 @@ from django.utils.safestring import mark_safe
 @login_required
 def artwork_instance(request, uuid):
     instance = get_object_or_404(ArtworkInstance, firestore_collection_id=uuid, user=request.user)
+    # Debug prints for licensing/expiry
+    print("[DEBUG] is_license_valid:", instance.is_license_valid())
+    print("[DEBUG] expiration_date:", instance.expiration_date())
+    print("[DEBUG] start_date:", instance.start_date)
+    print("[DEBUG] duration_days:", instance.duration_days)
+    print("[DEBUG] is_active:", instance.is_active)
+
     # Prepare instance data for frontend (JSON serializable)
     instance_data = {
         "firestore_collection_id": f"messages_{instance.firestore_collection_id}",
@@ -87,11 +94,6 @@ def artwork_instance(request, uuid):
         "start_date": instance.start_date.isoformat(),
         "is_active": instance.is_active,
     }
-    # Debug print and assertions
-    print("[DEBUG] licenseValid:", instance_data["licenseValid"])
-    print("[DEBUG] expiresAt:", instance_data["expiresAt"])
-    assert instance_data["licenseValid"] is True, "licenseValid must be True for licensed instances"
-    assert isinstance(instance_data["expiresAt"], str) and instance_data["expiresAt"], "expiresAt must be a non-empty string"
     return render(request, "artwork_instance.html", {
         "instance": instance,
         "instance_data_json": mark_safe(json.dumps(instance_data)),
