@@ -140,12 +140,19 @@ WSGI_APPLICATION = 'interactive_art_engine.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 
-# Heroku: Use DATABASE_URL if present
-DATABASES = {
-    'default': dj_database_url.config(
-        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}'
-    )
-}
+
+# Use Heroku/Postgres if DATABASE_URL is set, otherwise use SQLite for local development
+if os.getenv('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -178,15 +185,57 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Content Security Policy (CSP) settings
-CSP_FRAME_ANCESTORS = [
-    "'self'",
-    "https://interactive-art-engine-3b2925832eca.herokuapp.com",
-    "https://interactive-art-engine.vercel.app",
-    "http://localhost:5500",
-    "http://127.0.0.1:8000",
-    "https://msg-open.vercel.app",
-]
+
+CONTENT_SECURITY_POLICY = {
+    "DIRECTIVES": {
+        "default-src": ["'self'"],
+        "style-src": [
+            "'self'",
+            "https://cdn.jsdelivr.net",
+            "https://fonts.googleapis.com",
+            "https://ka-f.fontawesome.com",
+            "'unsafe-inline'"
+        ],
+        "script-src": [
+            "'self'",
+            "https://cdn.jsdelivr.net",
+            "https://kit.fontawesome.com",
+            "'unsafe-inline'"
+        ],
+        "img-src": [
+            "'self'",
+            "data:",
+            "https://cdn.jsdelivr.net",
+            "https://fonts.gstatic.com",
+            "https://ka-f.fontawesome.com"
+        ],
+        "font-src": [
+            "'self'",
+            "https://fonts.gstatic.com",
+            "https://cdn.jsdelivr.net",
+            "https://ka-f.fontawesome.com"
+        ],
+        "connect-src": [
+            "'self'",
+            "https://ka-f.fontawesome.com",
+            "https://cdn.jsdelivr.net"
+        ],
+        "frame-src": [
+            "'self'",
+            "https://msg-nu-ashen.vercel.app",
+            "https://msg-open.vercel.app"
+        ],
+        "frame-ancestors": [
+            "'self'",
+            "https://interactive-art-engine-3b2925832eca.herokuapp.com",
+            "https://interactive-art-engine.vercel.app",
+            "http://localhost:5500",
+            "http://127.0.0.1:8000",
+            "https://msg-open.vercel.app",
+            "https://msg-nu-ashen.vercel.app"
+        ]
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/ 
