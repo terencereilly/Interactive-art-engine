@@ -55,39 +55,27 @@
     </header>
 
     <!-- Fullscreen Iframe Section -->
-    <div style="position:relative; width:100vw; height:calc(100vh - 80px); min-height:300px; margin:0; padding:0;">
+    <div style="position:relative; width:100%; height:calc(100vh - 80px); min-height:300px; margin:0; padding:0;">
         <iframe id="myIframe"
             src="https://msg-nu-ashen.vercel.app/"
             allow="fullscreen; autoplay; camera; microphone; accelerometer; gyroscope; magnetometer; xr-spatial-tracking"
             loading="lazy"
             style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; display:block; background:#000;"></iframe>
-        <button id="fullscreenBtn" type="button" aria-label="Fullscreen" style="position:absolute; bottom:calc(15% - 10px); right:34px; z-index:20; background:rgba(255,255,255,0.85); border:none; border-radius:50%; width:48px; height:48px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.15); cursor:pointer; transition: background 0.2s, box-shadow 0.2s;">
+        <button id="fullscreenBtn" type="button" aria-label="Fullscreen" style="position:absolute; bottom:calc(15% - 10px); right:34px; z-index:20; background:rgba(255,255,255,0.85); border:none; border-radius:50%; width:48px; height:48px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.15); cursor:pointer;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="#333" stroke-width="2" d="M4 8V4h4m8 0h4v4m0 8v4h-4m-8 0H4v-4"/></svg>
         </button>
-        <style>
-            #fullscreenBtn:hover {
-                background: linear-gradient(135deg, #ff6b9d, #4a90e2);
-                box-shadow: 0 4px 16px rgba(74, 144, 226, 0.25);
-            }
-            #fullscreenBtn svg {
-                transition: transform 0.2s;
-            }
-            #fullscreenBtn:hover svg {
-                transform: scale(1.15);
-            }
-        </style>
     </div>
 
     <!-- Footer -->
-    <footer class="container-fluid">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-end align-items-center">
-                <a href="https://x.com/OltaArt" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-twitter social-icon"></i></a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-facebook social-icon"></i></a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-youtube social-icon"></i></a>
+        <footer class="container-fluid" style="position:fixed; bottom:0; left:0; width:100vw; background:rgba(255,255,255,0.85); z-index:1000; box-shadow:0 -2px 12px rgba(0,0,0,0.06);">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end align-items-center">
+                    <a href="https://x.com/OltaArt" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-twitter social-icon"></i></a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-facebook social-icon"></i></a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-youtube social-icon"></i></a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -99,30 +87,24 @@
 
     <!-- //////////////////////////////////////////////////////////////////////////// -->
    <script>
+        function toggleFullscreen(btn) {
+            const iframe = document.getElementById('myIframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            }
+        }
+
+
+
+
         // Show iframe when loaded, hide loader
         document.addEventListener('DOMContentLoaded', function() {
             const iframe = document.getElementById('myIframe');
-            const btn = document.getElementById('fullscreenBtn');
-            if (btn && iframe) {
-                btn.addEventListener('click', function() {
-                    // Try to make the iframe's content go fullscreen (if allowed by browser and cross-origin)
-                    if (iframe.requestFullscreen) {
-                        iframe.requestFullscreen();
-                    } else if (iframe.webkitRequestFullscreen) {
-                        iframe.webkitRequestFullscreen();
-                    } else if (iframe.msRequestFullscreen) {
-                        iframe.msRequestFullscreen();
-                    }
-                });
-            }
-            // Loader logic (if used)
             const loader = document.getElementById('iframeLoader');
-            if (iframe && loader) {
-                iframe.addEventListener('load', function() {
-                    loader.style.display = 'none';
-                    iframe.style.display = 'block';
-                });
-            }
+            iframe.addEventListener('load', function() {
+                if (loader) loader.style.display = 'none';
+                iframe.style.display = 'block';
+            });
         });
     </script>
 
