@@ -7,5 +7,6 @@ urlpatterns = [
     path("create-instance/", views.create_instance, name="create_instance"),
     path("artwork/<uuid>/", views.artwork_instance, name="artwork_instance"),
     path("deactivate-instance/<uuid>/", views.deactivate_instance, name="deactivate_instance"),
-    path('dashboard/', views.dashboard, name='dashboard'),
+    # The dashboard view is now only accessible at /dashboard/ (see project urls.py)
+    path('', views.dashboard, name='dashboard'),
 ]

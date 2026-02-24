@@ -20,7 +20,7 @@
         {% for instance in instances %}
         <tr>
           <td>{{ instance.firestore_collection_id }}</td>
-          <td><a href="/artwork/{{ instance.firestore_collection_id }}/">View Instance</a></td>
+          <td><a href="/dashboard/artwork/{{ instance.firestore_collection_id }}/">View Instance</a></td>
           <td>{{ instance.version }}</td>
           <td>{{ instance.expiration_date|date:'Y-m-d H:i' }}</td>
           <td>{% if instance.is_license_valid %}Valid{% else %}Expired{% endif %}</td>
