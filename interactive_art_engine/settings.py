@@ -1,11 +1,3 @@
-# Content Security Policy (CSP) settings
-CSP_FRAME_ANCESTORS = [
-    "'self'",
-    "https://interactive-art-engine.vercel.app",
-    "http://localhost:5500",
-    "http://127.0.0.1:8000",
-    "https://msg-open.vercel.app",
-]
 import os
 import dj_database_url
 # ...existing code...
@@ -186,11 +178,18 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Content Security Policy (CSP) settings
+CSP_FRAME_ANCESTORS = [
+    "'self'",
+    "https://interactive-art-engine-3b2925832eca.herokuapp.com",
+    "https://interactive-art-engine.vercel.app",
+    "http://localhost:5500",
+    "http://127.0.0.1:8000",
+    "https://msg-open.vercel.app",
+]
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
-
-
+# https://docs.djangoproject.com/en/6.0/howto/static-files/ 
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -216,4 +215,3 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
-#
