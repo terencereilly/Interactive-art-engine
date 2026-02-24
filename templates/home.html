@@ -20,97 +20,63 @@
 </head>
 
 <body>
-   
 
     <!-- Navigation -->
     <header class="modern-header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand space-grotesk-regular" href="#">
-                    <h1>VENUE</h1>
-                </a>
+                    <div class="row w-100">
+                        <div class="col-12 col-md-auto">
+                            <a class="navbar-brand space-grotesk-regular text-break" href="#" style="line-height:1.1; white-space:normal; word-break:break-word;">
+                                <span style="display:block;font-size:2.2rem;font-weight:700;">Messages to the Future</span>
+                                <span class="navbar-tagline d-block" style="font-size:1rem;font-weight:400;color:#666;margin-top:0.1rem;letter-spacing:0.01em; white-space:normal; word-break:break-word;">License &amp; run your own copy of this evolving interactive artwork</span>
+                            </a>
+                        </div>
+                    </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!-- <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
-                        </li> -->
+                    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto d-flex align-items-center">
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">Licensing</a>
                         </li>
+                        <li class="nav-item ms-lg-3">
+                            <a href="/login/" class="btn btn-outline-primary">Login</a>
+                        </li>
                     </ul>
-                    <div class="d-flex">
-                        <a href="/login/" class="btn btn-outline-primary ms-lg-3">Login</a>
-                    </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Main | Body of Website -->
-    <main class="footer-spacer">
-
-        <!-- //////////////////////////////////////////////////////////////////////////// -->
-        <!-- Hero Section -->
-        <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-<!-- 
-    <div class="overlay-wellness-calm">
-    <h2 class="hero-heading">Messages To The Future</h2>
-    <h4 class="hero-sub-heading"><i>A browser-based artwork that remembers everyone's interactions over time. License & run your own exclusive copy of this evolving interactive artwork. Engage your visitors, 
-        create a living experience, and make your venue the only place to witness it.</i></h4>
-    <p class="hero-pitch">
-    </p>
-</div> -->
-
-  
-
-        <!-- //////////////////////////////////////////////////////////////////////////// -->
-        <!-- iFrame Section -->
-        <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-        <!-- gradient-wellness-warm -->
-        <div class="connect-artwork gradient-wellness-warm">
-            <h2 class="building-connections"></h2>
-            <p class="connect-paragraph paragraph"></p>
-            <br>
-        
-            <!-- <div class="connect-placeholder">Connect Embed Placeholder</div> -->
-        
-            <div class="iframe-container" style="position:relative;width:100%;height:600px;">
-                <button class="fullscreen-btn" onclick="toggleFullscreen()">
-                    <i class="fa-solid fa-expand"></i>
-                </button>
-                <!-- Loader Spinner (overlay) -->
-                <div id="iframeLoader" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:rgba(255,255,255,0.7);z-index:2;">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-                <iframe id="myIframe"
-                    src="https://msg-nu-ashen.vercel.app/"
-                    allow="fullscreen; autoplay; camera; microphone; accelerometer; gyroscope; magnetometer; xr-spatial-tracking" 
-                    allowfullscreen
-                    loading="lazy"
-                    style="width:100%;height:100%;border:none;position:absolute;top:0;left:0;z-index:1;"></iframe>
-            </div>
-        
-            <br>
-        
-            <p class="paragraph"></p>
-        
-        </div>
-
-       
+    <!-- Fullscreen Iframe Section -->
+    <div style="position:relative; width:100vw; height:calc(100vh - 80px); min-height:300px; margin:0; padding:0;">
+        <iframe id="myIframe"
+            src="https://msg-nu-ashen.vercel.app/"
+            allow="fullscreen; autoplay; camera; microphone; accelerometer; gyroscope; magnetometer; xr-spatial-tracking"
+            loading="lazy"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; display:block; background:#000;"></iframe>
+        <button id="fullscreenBtn" type="button" aria-label="Fullscreen" style="position:absolute; bottom:calc(15% - 10px); right:34px; z-index:20; background:rgba(255,255,255,0.85); border:none; border-radius:50%; width:48px; height:48px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.15); cursor:pointer; transition: background 0.2s, box-shadow 0.2s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="#333" stroke-width="2" d="M4 8V4h4m8 0h4v4m0 8v4h-4m-8 0H4v-4"/></svg>
+        </button>
+        <style>
+            #fullscreenBtn:hover {
+                background: linear-gradient(135deg, #ff6b9d, #4a90e2);
+                box-shadow: 0 4px 16px rgba(74, 144, 226, 0.25);
+            }
+            #fullscreenBtn svg {
+                transition: transform 0.2s;
+            }
+            #fullscreenBtn:hover svg {
+                transform: scale(1.15);
+            }
+        </style>
+    </div>
 
     <!-- Footer -->
     <footer class="container-fluid">
@@ -123,7 +89,6 @@
         </div>
     </footer>
 
-
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -132,26 +97,32 @@
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/9fc19e8b68.js" crossorigin="anonymous"></script>
 
-   
-     <!-- //////////////////////////////////////////////////////////////////////////// -->
-        <!-- Encouraging Words Section -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
    <script>
-        function toggleFullscreen(btn) {
-            const iframe = document.getElementById('myIframe');
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            }
-        }
-
         // Show iframe when loaded, hide loader
         document.addEventListener('DOMContentLoaded', function() {
             const iframe = document.getElementById('myIframe');
+            const btn = document.getElementById('fullscreenBtn');
+            if (btn && iframe) {
+                btn.addEventListener('click', function() {
+                    // Try to make the iframe's content go fullscreen (if allowed by browser and cross-origin)
+                    if (iframe.requestFullscreen) {
+                        iframe.requestFullscreen();
+                    } else if (iframe.webkitRequestFullscreen) {
+                        iframe.webkitRequestFullscreen();
+                    } else if (iframe.msRequestFullscreen) {
+                        iframe.msRequestFullscreen();
+                    }
+                });
+            }
+            // Loader logic (if used)
             const loader = document.getElementById('iframeLoader');
-            iframe.addEventListener('load', function() {
-                loader.style.display = 'none';
-                iframe.style.display = 'block';
-            });
+            if (iframe && loader) {
+                iframe.addEventListener('load', function() {
+                    loader.style.display = 'none';
+                    iframe.style.display = 'block';
+                });
+            }
         });
     </script>
 
