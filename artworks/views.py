@@ -5,6 +5,8 @@ from .forms import CreateInstanceForm
 from .models import ArtworkTemplate, ArtworkInstance
 from .utils.firestore import create_firestore_instance_collection
 from django.contrib.auth.models import User
+import json
+from django.utils.safestring import mark_safe
 
 
 
@@ -72,9 +74,6 @@ def create_instance(request):
 
 
 # Instance detail view (for iframe page)
-import json
-from django.utils.safestring import mark_safe
-
 @login_required
 def artwork_instance(request, uuid):
     instance = get_object_or_404(ArtworkInstance, firestore_collection_id=uuid, user=request.user)
@@ -100,3 +99,9 @@ def artwork_instance(request, uuid):
         "instance": instance,
         "instance_data_json": mark_safe(json.dumps(instance_data)),
     })
+
+
+@login_required
+def dashboard(request):
+    instances = ArtworkInstance.objects.filter(user=request.user)
+    return render(request, 'dashboard.html', {'instances': instances})

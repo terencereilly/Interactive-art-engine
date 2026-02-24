@@ -23,6 +23,7 @@ urlpatterns = [
     path('artworks/', include('artworks.urls')),
     path('versions/', include('artworks.urls')),
     path('admin/', admin.site.urls),
+    path('dashboard/', include('artworks.urls')),  # Added line for /dashboard/ route
 ]
 urlpatterns += [
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),

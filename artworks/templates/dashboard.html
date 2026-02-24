@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Dashboard</h2>
+  <p>Welcome to your dashboard. Your licensed artwork instances will appear here.</p>
+  {% if instances %}
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>UUID</th>
+          <th>URL</th>
+          <th>Template Version</th>
+          <th>Expiration Date</th>
+          <th>License Status</th>
+          <th>Messages Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for instance in instances %}
+        <tr>
+          <td>{{ instance.firestore_collection_id }}</td>
+          <td><a href="/artwork/{{ instance.firestore_collection_id }}/">View Instance</a></td>
+          <td>{{ instance.version }}</td>
+          <td>{{ instance.expiration_date|date:'Y-m-d H:i' }}</td>
+          <td>{% if instance.is_license_valid %}Valid{% else %}Expired{% endif %}</td>
+          <td><!-- Message count will go here --></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No instances found.</p>
+  {% endif %}
+</div>
+{% endblock %}
