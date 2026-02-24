@@ -1,3 +1,11 @@
+# Content Security Policy (CSP) settings
+CSP_FRAME_ANCESTORS = [
+    "'self'",
+    "https://interactive-art-engine.vercel.app",
+    "http://localhost:5500",
+    "http://127.0.0.1:8000",
+    "https://msg-open.vercel.app",
+]
 import os
 import dj_database_url
 # ...existing code...
@@ -96,10 +104,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'artworks',
     'core',
+    'csp',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'csp.middleware.CSPMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,6 +118,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+
+
 
 ROOT_URLCONF = 'interactive_art_engine.urls'
 
