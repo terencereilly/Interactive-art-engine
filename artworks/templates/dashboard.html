@@ -2,41 +2,59 @@
 {% block title %}Dashboard{% endblock %}
 {% block content %}
 <div class="container mt-4">
-  <h2>Dashboard</h2>
+  <h2 class="mb-3">Dashboard</h2>
   <p>Welcome to your dashboard. Your licensed artwork instances will appear here.</p>
   {% if instances %}
-    <table class="table table-bordered mt-3">
-      <thead>
-        <tr>
-          <th>UUID</th>
-          <th>URL</th>
-          <th>Template Version</th>
-          <th>Expiration Date</th>
-          <th>License Status</th>
-          <th>Messages Count</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for instance in instances %}
-        <tr>
-          <td>{{ instance.firestore_collection_id }}</td>
-          <td><a href="/dashboard/artwork/{{ instance.firestore_collection_id }}/">View Instance</a></td>
-          <td>{{ instance.version }}</td>
-          <td>{{ instance.expiration_date|date:'Y-m-d H:i' }}</td>
-          <td>{% if instance.is_license_valid %}Valid{% else %}Expired{% endif %}</td>
-          <td><!-- Message count will go here --></td>
-          <td>
-            <form method="post" action="{% url 'deactivate_instance' instance.firestore_collection_id %}" style="display:inline;">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-danger btn-sm">Deactivate Instance</button>
-            </form>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped mt-3">
+        <thead class="table-light">
+          <tr>
+            <th>UUID</th>
+            <th>URL</th>
+            <th>Template Version</th>
+            <th>Expiration Date</th>
+            <th>License Status</th>
+            <th>Messages Count</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for instance in instances %}
+          <tr>
+            <td style="word-break:break-all;">{{ instance.firestore_collection_id }}</td>
+            <td><a href="/dashboard/artwork/{{ instance.firestore_collection_id }}/">View Instance</a></td>
+            <td>{{ instance.version }}</td>
+            <td>{{ instance.expiration_date|date:'Y-m-d H:i' }}</td>
+            <td>{% if instance.is_license_valid %}Valid{% else %}Expired{% endif %}</td>
+            <td><!-- Message count will go here --></td>
+            <td>
+              <form method="post" action="{% url 'deactivate_instance' instance.firestore_collection_id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Deactivate Instance</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   {% else %}
     <p>No instances found.</p>
   {% endif %}
 </div>
+<style>
+  @media (max-width: 767.98px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+    .table th, .table td {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+    .container {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+</style>
 {% endblock %}
