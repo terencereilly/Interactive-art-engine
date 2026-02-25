@@ -32,25 +32,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/artworks/versions/">Browse Artworks</a>
                         </li>
-                        {% if request.path != '/artworks/versions/' and request.path != '/login/' %}
-                            {% if user.is_authenticated %}
-                                <li class="nav-item ms-lg-3">
-                                    <a href="/dashboard/" class="btn btn-outline-primary me-2">Dashboard</a>
-                                </li>
-                                <li class="nav-item ms-lg-1">
-                                    <form method="post" action="/logout/" style="display:inline;">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-outline-danger">Logout</button>
-                                    </form>
-                                </li>
-                            {% else %}
-                                <li class="nav-item ms-lg-3">
-                                    <a href="/login/" class="btn btn-outline-primary me-2">Login</a>
-                                </li>
-                                <li class="nav-item ms-lg-1">
-                                    <a href="/signup/" class="btn btn-outline-success">Sign Up</a>
-                                </li>
-                            {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item ms-lg-3">
+                                <a href="/dashboard/" class="btn btn-outline-primary me-2">Dashboard</a>
+                            </li>
+                            <li class="nav-item ms-lg-1">
+                                <form method="post" action="/logout/" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-outline-danger">Logout</button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li class="nav-item ms-lg-3">
+                                <a href="/accounts/login/" class="btn btn-outline-primary me-2">Login</a>
+                            </li>
+                            <li class="nav-item ms-lg-1">
+                                <a href="/accounts/signup/" class="btn btn-outline-success">Sign Up</a>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>
