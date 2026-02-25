@@ -11,7 +11,7 @@
         padding: 0;
         border: none;
         display: block;
-        background: #fff;
+        background: #a2a2a2;
         z-index: 10;
 }
 @media (max-width: 425px) {
@@ -95,13 +95,13 @@ iframe {
     --primary-font: 'Space Grotesk', sans-serif;
     --secondary-font: 'Inter', sans-serif;
     --primary-color: #1a1a1a;
-    --secondary-color: #666666;
+    --secondary-color: #ffffff;
     
     /* Vibrant Gradient Color Palette */
-    --bg-light-top: #e8f4f8;
-    --bg-light-bottom: #fef9e7;
+    --bg-light-top: #ffffff;
+    --bg-light-bottom: #ffffff;
     --gradient-blue: #4a90e2;
-    --gradient-purple: #9b59b6;
+    --gradient-purple: #ffffff;
     --gradient-cyan: #1abc9c;
     --gradient-teal: #16a085;
     --gradient-magenta: #e91e63;
@@ -122,8 +122,8 @@ iframe {
 /* //////////////////////////////////////////////////////////////////////////// */
 .modern-header {
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    /* backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08); */
     position: sticky;
     top: 0;
     z-index: 100;

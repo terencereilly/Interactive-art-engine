@@ -8,6 +8,8 @@ DATABASES = {
         default=os.environ.get('DATABASE_URL')
     )
 }
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 # --- Robust console logging for Heroku error debugging ---
 import sys
 LOGGING = {
