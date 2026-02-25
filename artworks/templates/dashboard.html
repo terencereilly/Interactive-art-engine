@@ -25,6 +25,12 @@
           <td>{{ instance.expiration_date|date:'Y-m-d H:i' }}</td>
           <td>{% if instance.is_license_valid %}Valid{% else %}Expired{% endif %}</td>
           <td><!-- Message count will go here --></td>
+          <td>
+            <form method="post" action="{% url 'deactivate_instance' instance.firestore_collection_id %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Deactivate Instance</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

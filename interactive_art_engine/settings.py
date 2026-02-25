@@ -245,8 +245,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static'] if (BASE_DIR / 'static').exists() else []
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
 # Redirect users to homepage after login
 LOGIN_REDIRECT_URL = "/artworks/versions/"
+# Redirect users to homepage after logout
+LOGOUT_REDIRECT_URL = "/"
+# Redirect users to homepage after logout
+LOGOUT_REDIRECT_URL = "/"
 
 import sys
 

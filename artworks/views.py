@@ -22,11 +22,12 @@ def deactivate_instance(request, uuid):
 
 # Create your views here.
 
-@login_required
+
 def versions(request):
-    active_instances = ArtworkInstance.objects.filter(user=request.user, is_active=True)
-    # Map version to instance for quick lookup
-    version_to_instance = {inst.version: inst for inst in active_instances}
+    version_to_instance = {}
+    if request.user.is_authenticated:
+        active_instances = ArtworkInstance.objects.filter(user=request.user, is_active=True)
+        version_to_instance = {inst.version: inst for inst in active_instances}
     return render(request, "versions.html", {"version_to_instance": version_to_instance})
 
 

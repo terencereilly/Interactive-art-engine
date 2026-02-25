@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Artwork</title>
+    <link rel="stylesheet" href="{% static 'assets/css/about.css' %}">
+</head>
+<body>
+    <div class="about-hero">
+        <h1>About the Artwork</h1>
+        <h2>Concept, Use Cases & Artist Info</h2>
+    </div>
+
+    <section class="about-section concept reveal">
+        <h2>The Concept</h2>
+        <p>Brief explanation of the artwork’s idea and inspiration.</p>
+    </section>
+
+    <section class="about-section use-cases reveal">
+        <h2>Use Cases</h2>
+        <p>How the artwork can be used (exhibitions, venues, interactive installations).</p>
+    </section>
+
+    <section class="about-section artist reveal">
+        <h2>About the Artist</h2>
+        <p>Artist’s bio, background, and creative philosophy.</p>
+    </section>
+
+    <section class="about-section studio reveal">
+        <h2>Production Studio</h2>
+        <p>Info about the studio/team behind the project.</p>
+    </section>
+
+    <section class="about-section recognition reveal">
+        <h2>Recognition</h2>
+        <p>Awards, press, or notable collaborations.</p>
+    </section>
+
+    <footer class="about-footer">
+        <div>Social links | Contact | Copyright</div>
+    </footer>
+
+    <script src="{% static 'assets/js/about.js' %}"></script>
+</body>
+</html>
