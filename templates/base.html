@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Interactive Art Engine{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure navbar toggler is always top right on mobile */
+        @media (max-width: 991.98px) {
+            .navbar-toggler {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                z-index: 1051;
+            }
+            .navbar .container-fluid {
+                position: relative;
+            }
+        }
+    </style>
     {% load static %}
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 </head>
@@ -12,7 +26,7 @@
     <!-- Site-wide Header (from homepage) -->
     <header class="modern-header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
+            <div class="container-fluid position-relative">
                 <div class="row w-100">
                     <div class="col-12 col-md-auto">
                         <a class="navbar-brand space-grotesk-regular text-break" href="/" style="line-height:1.1; white-space:normal; word-break:break-word;">
@@ -69,4 +83,6 @@
         </div>
     </footer>
 </body>
+    <!-- Bootstrap 5 JS (required for navbar toggler) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </html>
