@@ -1,13 +1,7 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About the Artwork</title>
+{% block content %}
     <link rel="stylesheet" href="{% static 'assets/css/about.css' %}">
-</head>
-<body>
     <div class="about-hero">
         <h1>About the Artwork</h1>
         <h2>Concept, Use Cases & Artist Info</h2>
@@ -43,5 +37,4 @@
     </footer>
 
     <script src="{% static 'assets/js/about.js' %}"></script>
-</body>
-</html>
+{% endblock %}
