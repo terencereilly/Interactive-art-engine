@@ -83,6 +83,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-insecure-key')
 import dj_database_url
 DEBUG = os.getenv('DEBUG', 'False') == 'false'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '.herokuapp.com').split(',')
+# Add local IP for mobile testing
+if DEBUG:
+    ALLOWED_HOSTS += ['localhost', '127.0.0.1', '192.168.178.132']
 
 
 # Application definition
