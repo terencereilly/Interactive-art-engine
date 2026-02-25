@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <h2 class="mb-4">Create Artwork Instance</h2>
     {% if error_message %}
-        <div class="alert alert-danger">{{ error_message }}</div>
+        <div class="alert alert-danger">{{ error_message|safe }}</div>
     {% endif %}
     <form method="post">
         {% csrf_token %}

@@ -47,7 +47,10 @@ def create_instance(request):
             # Enforce one active instance per user per version
             existing = ArtworkInstance.objects.filter(user=request.user, version=template_version, is_active=True)
             if existing.exists():
-                error_message = "You already have an active instance for this artwork version. Please deactivate it before creating a new one."
+                error_message = (
+                    "You already have an active instance for this version of the artwork. "
+                    "Visit your <a href='/dashboard/' class='alert-link'>dashboard</a> to view and see more details. "
+                )
             else:
                 # Get the template object
                 template_obj = ArtworkTemplate.objects.filter(version=template_version).first()
