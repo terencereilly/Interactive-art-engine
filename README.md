@@ -1,3 +1,15 @@
+# Wireframe Designs
+
+Below are the wireframe designs for the application:
+
+**Homepage intro sequence** on Desktop:
+![Wireframe 1](wireframes/homepage_desktop.png)
+
+**User Input Message** on Desktop: Click on a panel in 3d scene & Text Submit modal appears.
+![Wireframe 2](wireframes/input_message_desktop.png)
+
+**Expand to learn more** on Desktop: Click on a panel that has existing text from as user to open a larger panel to read more of the message and about the user.  
+![Wireframe 3](wireframes/learn_more_desktop.png)
 # Interactive Art Engine
 
 A modern, multi-tenant interactive web platform for submitting and displaying messages in immersive digital environments. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
@@ -104,9 +116,9 @@ graph TD
 
 * **Company** – Licensed venue
 * **Artwork** – Master template for interactive experiences
-* **Version** – Defines logic, rules, moderation
+* **Artwork Version** – Defines logic, rules, moderation
 * **ArtworkInstance** – Isolated deployment per venue
-* **License** – Start/end dates and status
+* **License** – Start/end dates and Ownership status
 
 ---
 
