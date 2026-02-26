@@ -41,6 +41,8 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 ---
 
+
+
 ## Conceptual Framework
 
 ### Philosophical Purpose
@@ -66,18 +68,62 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 ---
 
-# Wireframe Designs
+# Wireframe Design
+Below are the wireframe designs for the application, showing key screens and responsive layouts:
 
-Below are the wireframe designs for the application:
+### Homepage (Desktop)
+Intro sequence for desktop users, showing the landing page and navigation.
+![Homepage Desktop](wireframes/homepage_desktop.png)
 
-**Homepage intro sequence** on Desktop:
-![Wireframe 1](wireframes/homepage_desktop.png)
+### User Input Message (Desktop)
+Panel selection in the 3D scene triggers a modal for text submission.
+![Input Message Desktop](wireframes/input_message_desktop.png)
 
-**User Input Message** on Desktop: Click on a panel in 3d scene & Text Submit modal appears.
-![Wireframe 2](wireframes/input_message_desktop.png)
+### Learn More (Desktop)
+Expanding a panel reveals more about the message and the user.
+![Learn More Desktop](wireframes/learn_more_desktop.png)
 
-**Expand to learn more** on Desktop: Click on a panel that has existing text from as user to open a larger panel to read more of the message and about the user.  
-![Wireframe 3](wireframes/learn_more_desktop.png)
+---
+
+
+
+
+
+
+
+
+# Web App Pages [UX & UI Design]
+
+### Home Page
+
+
+### Device Versions Page (iPad)
+Responsive layout for iPad devices.
+![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
+
+### Device Versions Page (Mobile)
+Responsive layout for mobile devices.
+![Mobile Device Versions Page](wireframes/mobile_device_versions_page.png)
+
+### Artwork Instance View
+Displays the main interactive artwork instance as seen by users.
+![Artwork Instance](wireframes/artwork_instance.png)
+
+### Login Page
+User authentication screen.
+![Login Page](wireframes/login_page.png)
+
+### User Dashboard
+Overview of user activity and artwork instances.
+![User Dashboard](wireframes/user_dashboard.png)
+
+
+
+
+
+
+
+
 
 ## System Architecture
 
@@ -256,27 +302,12 @@ Each instance is created from exactly one template. -->
 - Instance creation
 - License enforcement
 
-**Firestore handles:**
-- Persistent live messages
+# Firestore Database
+- Persistent state live messages
 
----
-
-## Wireframe Design
-
-### 1. Default Canvas View
-
-![Wireframe Canvas](public/wireframe-canvas.png)
-*3D tunnel, Message cells, top-right control panel visible.*
-
-### 2. Input Modal
-
-![Input Modal](public/wireframe-frame2.png)
-*Click a cell to input a message, submit or cancel.*
-
-### 3. Expanded Message
-
-![Expanded Message](public/wireframe-frame3.png)
-*Overlay for viewing longer messages.*
+### Licensing Validation Proof
+Screen showing license validation for venues.
+![Licensing Validation Proof](wireframes/licensing_validation_proof.png)
 
 ---
 
@@ -294,13 +325,31 @@ Each instance is created from exactly one template. -->
 
 ---
 
-## Responsive Breakpoints
+# Responsive Breakpoints
 
 | Device  | Width      | Notes             |
 | ------- | ---------- | ----------------- |
 | Mobile  | 0–600px    | Stacked layout    |
 | Tablet  | 601–1024px | Horizontal panels |
 | Desktop | 1025+px    | Full 3D canvas    |
+
+# Responsive Screenshots
+Wireframes showing the app at various screen widths:
+
+- **Max width 425px:**
+  ![Max Width 425px](wireframes/max_width_425px.png)
+- **Max width 768px:**
+  ![Max Width 768px](wireframes/max_width_768px.png)
+- **Max width 768px (B):**
+  ![Max Width 768px B](wireframes/max_width_768px_B.png)
+- **Max width 1024px:**
+  ![Max Width 1024px](wireframes/max_width_1024px.png)
+- **Max width 2560px:**
+  ![Max Width 2560px](wireframes/max_width_2560px.png)
+- **Max width 2560px (B):**
+  ![Max Width 2560px B](wireframes/max_width_2560px_B.png)
+
+
 
 ---
 
@@ -365,13 +414,8 @@ Configure `.env` for API keys, database credentials, and environment variables.
 
 ---
 
-<!-- // test  -->
-
-## Testing
-
-* Django unit tests for models & business logic - Re-organise later 
-* React testing for frontend components
-* Firestore security rules validated in Firebase emulator
+# Testing
+## Django Test
 
 * Django unit tests for models & business logic for licensing 
 ## Firestore Integration Tests (artworks/tests.py)
@@ -452,6 +496,13 @@ class FirestoreIntegrationTest(TestCase):
     self.assertEqual(messages["test_doc_2"]["message"], second_message)
     self.assertEqual(messages["test_doc_2"]["user"], "user2")
 ```
+
+## Performance Testing
+### Lighthouse Test Results
+Performance and accessibility test results for the app.
+![Lighthouse Test](wireframes/lighthouse_test.png)
+
+
 
 ---
 
