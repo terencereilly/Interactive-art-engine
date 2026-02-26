@@ -31,43 +31,14 @@
             width: 100vw !important;
         }
     }
-    #fullscreenBtn {
-        position: absolute;
-        bottom: 13vh;
-        right: 32px;
-        z-index: 2100;
-        background: rgba(232, 232, 232, 0.85);
-        border: none;
-        border-radius: 50%;
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        cursor: pointer;
-        transition: background 0.2s;
-    }
-    #fullscreenBtn:active {
-        background: #e0e0e0;
-    }
-    @media (max-width: 600px) {
-        #fullscreenBtn {
-            bottom: 16px;
-            right: 16px;
-            width: 40px;
-            height: 40px;
-        }
-    }
+
 </style>
 <iframe id="myIframe"
     src="https://msg-nu-ashen.vercel.app/"
     allow="fullscreen; autoplay; camera; microphone; accelerometer; gyroscope; magnetometer; xr-spatial-tracking"
     loading="lazy">
 </iframe>
-<button id="fullscreenBtn" type="button" aria-label="Fullscreen">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="#333" stroke-width="2" d="M4 8V4h4m8 0h4v4m0 8v4h-4m-8 0H4v-4"/></svg>
-</button>
+
 <script>
     function toggleFullscreen(btn) {
         const iframe = document.getElementById('myIframe');
