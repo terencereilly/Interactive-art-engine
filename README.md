@@ -352,21 +352,17 @@ Configure `.env` for API keys, database credentials, and environment variables.
 ## Testing
 
 * Django unit tests for models & business logic - Re-organise later 
-* Jest / React testing for frontend components
+* React testing for frontend components
 * Firestore security rules validated in Firebase emulator
 
 * Django unit tests for models & business logic for licensing 
 ## Firestore Integration Tests (artworks/tests.py)
 
-## Backend Unit Testing
+## Backend Unit Tests
 * This project includes Django unit tests for both model logic and Firestore integration. These tests ensure that your licensing, instance creation, and Firestore message storage all work as expected.
 
-## To run all tests:
-
 * Example Firestore Integration Tests in Artwork App (tests.py):
-## test_create_new_collection: Creates a new Firestore collection and verifies the document.
-## test_firestore_write_and_read: Writes and reads a message in Firestore.
-## test_firestore_second_user_message: Simulates a second user adding a message to the same collection.
+## Test 1: Django creates a new Firestore collection and verifies the document
 
 ```python
 from django.test import TestCase
@@ -378,10 +374,10 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from dotenv import load_dotenv
 from django.test import TestCase
+```
+## Test 2: Django writes and reads a message in Firestore.
 
-# If you want to run a specific test, use:
-# python manage.py test artworks.FirestoreIntegrationTest.test_firestore_write_and_read
-
+```python
 class FirestoreIntegrationTest(TestCase):
   @classmethod
   def setUpClass(cls):
@@ -392,7 +388,7 @@ class FirestoreIntegrationTest(TestCase):
       cred = credentials.Certificate(FIREBASE_CRED_PATH)
       firebase_admin.initialize_app(cred)
     cls.firestore_client = firestore.client()
-
+   
   def test_create_new_collection(self):
     # Create a new collection and add a document
     new_collection = "new_test_collection"
@@ -416,7 +412,9 @@ class FirestoreIntegrationTest(TestCase):
     data = doc.to_dict()
     self.assertIsNotNone(data)
     self.assertEqual(data.get("message"), test_message)
-
+  ```
+  ## Test 3: Django simulates a second user adding a message to the same collection.
+```python
   def test_firestore_second_user_message(self):
     # Ensure the first message exists
     doc_ref1 = self.firestore_client.collection("test_collection").document("test_doc")
