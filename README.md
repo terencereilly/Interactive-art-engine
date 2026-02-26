@@ -1,20 +1,10 @@
-# Wireframe Designs
 
-Below are the wireframe designs for the application:
-
-**Homepage intro sequence** on Desktop:
-![Wireframe 1](wireframes/homepage_desktop.png)
-
-**User Input Message** on Desktop: Click on a panel in 3d scene & Text Submit modal appears.
-![Wireframe 2](wireframes/input_message_desktop.png)
-
-**Expand to learn more** on Desktop: Click on a panel that has existing text from as user to open a larger panel to read more of the message and about the user.  
-![Wireframe 3](wireframes/learn_more_desktop.png)
 # Interactive Art Engine
 
-A modern, multi-tenant interactive web platform for submitting and displaying messages in immersive digital environments. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
+An interactive web Art Engine. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
 
-**Live Demo:** [Wireframe Page](https://msg-nu-ashen.vercel.app/wireframe.html)
+**Live App** (View Here) > [Interactive Art Engine App](https://interactive-art-engine-3b2925832eca.herokuapp.com/)
+![Wireframe 1](wireframes/app_homepage.png)
 
 ---
 
@@ -33,6 +23,20 @@ A modern, multi-tenant interactive web platform for submitting and displaying me
 * [Testing](#testing)
 * [Future Enhancements](#future-enhancements)
 * [Author](#author)
+
+# Wireframe Designs
+
+Below are the wireframe designs for the application:
+
+**Homepage intro sequence** on Desktop:
+![Wireframe 1](wireframes/homepage_desktop.png)
+
+**User Input Message** on Desktop: Click on a panel in 3d scene & Text Submit modal appears.
+![Wireframe 2](wireframes/input_message_desktop.png)
+
+**Expand to learn more** on Desktop: Click on a panel that has existing text from as user to open a larger panel to read more of the message and about the user.  
+![Wireframe 3](wireframes/learn_more_desktop.png)
+
 
 ---
 
@@ -459,14 +463,6 @@ class FirestoreIntegrationTest(TestCase):
 
 ---
 
-## Author
-
-**Terence Reilly**
-
-* GitHub: [@terencereilly](https://github.com/terencereilly)
-* Email: [terryreillyo@gmail.com](mailto:terryreillyo@gmail.com)
-
----
 
 ### What this shows for your MVP:
 
@@ -502,4 +498,15 @@ This diagram shows how multiple companies can each have **one active artwork ins
 - Generates a unique artwork instance URL
 - A Firestore collection is created per instance
 - Only **one active instance per company** at a time
+
+---
+
+# Author
+
+**Terence Reilly**
+
+* GitHub: [@terencereilly](https://github.com/terencereilly)
+* Email: [terryreillyo@gmail.com](mailto:terryreillyo@gmail.com)
+
+---
 
