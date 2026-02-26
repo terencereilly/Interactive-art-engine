@@ -24,18 +24,7 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 * [Future Enhancements](#future-enhancements)
 * [Author](#author)
 
-# Wireframe Designs
 
-Below are the wireframe designs for the application:
-
-**Homepage intro sequence** on Desktop:
-![Wireframe 1](wireframes/homepage_desktop.png)
-
-**User Input Message** on Desktop: Click on a panel in 3d scene & Text Submit modal appears.
-![Wireframe 2](wireframes/input_message_desktop.png)
-
-**Expand to learn more** on Desktop: Click on a panel that has existing text from as user to open a larger panel to read more of the message and about the user.  
-![Wireframe 3](wireframes/learn_more_desktop.png)
 
 
 ---
@@ -76,6 +65,19 @@ Below are the wireframe designs for the application:
 * AI-assisted moderation and reporting
 
 ---
+
+# Wireframe Designs
+
+Below are the wireframe designs for the application:
+
+**Homepage intro sequence** on Desktop:
+![Wireframe 1](wireframes/homepage_desktop.png)
+
+**User Input Message** on Desktop: Click on a panel in 3d scene & Text Submit modal appears.
+![Wireframe 2](wireframes/input_message_desktop.png)
+
+**Expand to learn more** on Desktop: Click on a panel that has existing text from as user to open a larger panel to read more of the message and about the user.  
+![Wireframe 3](wireframes/learn_more_desktop.png)
 
 ## System Architecture
 
