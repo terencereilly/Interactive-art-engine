@@ -377,36 +377,6 @@ Wireframes showing the app at various screen widths:
 
 ---
 
-
-
-
-
-# Web App [UX & UI Design]
-
-### Home Page
-![Home Page with embedded Public Artwork](wireframes/home_page_01.png)
-
-### Device Versions Page
-Responsive layout for iPad devices.
-![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
-
-### Device Versions Page (Mobile)
-Responsive layout for mobile devices.
-![Mobile Device Versions Page](wireframes/mobile_device_versions_page.png)
-
-
-
-
-
-
-
-
-
-
-
-
----
-
 ## Components & Layout Map
 
 | Component                | Description                        |
@@ -418,50 +388,6 @@ Responsive layout for mobile devices.
 | Input Modal              | Cell click → input modal           |
 | Expanded Message Overlay | Fullscreen message view            |
 | Close Button             | Closes overlay                     |
-
----
-
-
-
-
-
-
-
-
-## Getting Started
-
-### Prerequisites
-
-* Python 3.11+
-* Node.js 18+
-* Firebase project for Firestore
-* Modern browser
-
-### Setup
-
-```bash
-git clone https://github.com/terencereilly/interactive-art-engine.git
-cd interactive-art-engine
-```
-
-**Backend**
-
-```bash
-cd backend
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-**Frontend**
-
-```bash
-cd ../frontend
-npm install
-npm start
-```
-
-Configure `.env` for API keys, database credentials, and environment variables.
 
 ---
 
@@ -553,7 +479,40 @@ class FirestoreIntegrationTest(TestCase):
 Performance and accessibility test results for the app.
 ![Lighthouse Test](wireframes/lighthouse_test.png)
 
+## How to Get started with Development
 
+### Prerequisites
+
+* Python 3.11+
+* Node.js 18+
+* Firebase project for Firestore
+* Modern browser
+
+### Setup
+
+```bash
+git clone https://github.com/terencereilly/interactive-art-engine.git
+cd interactive-art-engine
+```
+
+**Backend**
+
+```bash
+cd backend
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+**Frontend**
+
+```bash
+cd ../frontend
+npm install
+npm start
+```
+
+Configure `.env` for API keys, database credentials, and environment variables.
 
 ---
 
@@ -567,42 +526,6 @@ Performance and accessibility test results for the app.
 
 ---
 
-
-### What this shows for your MVP:
-
-- **Backend (Django):**  
-  - ArtworkInstance model  
-  - License & Version metadata  
-  - Admin API endpoints for creating/viewing instances  
-
-- **Frontend:**  
-  - 3D canvas + message input  
-  - Apply version-specific moderation logic  
-  - Fetch instance config from Django  
-
-
-
-- **Out-of-scope / Future:**  
-  - Multi-tenant orchestration  
-  - AI moderation  
-  - Marketplace / multiple artworks  
-
----
-
-## MVP Architecture: Single-Instance Artwork per Company
-
-
-This diagram shows how multiple companies can each have **one active artwork instance** with its own **Firestore collection**.
-
-![Architecture Diagram](assets/images/Archtiecture.png)
-
-- Each company logs in as an admin
-- Generates a unique artwork instance URL
-- A Firestore collection is created per instance
-- Only **one active instance per company** at a time
-
----
-
 # Author
 
 **Terence Reilly**
@@ -611,17 +534,3 @@ This diagram shows how multiple companies can each have **one active artwork ins
 * Email: [terryreillyo@gmail.com](mailto:terryreillyo@gmail.com)
 
 ---
-
-
-
-
-
-
-
-
-# Extra Screensots - Might not use 
-### Homepage (Desktop)
-Intro sequence for desktop users, showing the landing page and navigation.
-![Homepage Desktop](wireframes/homepage_desktop.png)
-
-  ![Max Width 768px B](wireframes/max_width_768px_B.png)
