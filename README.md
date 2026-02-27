@@ -4,7 +4,7 @@
 An interactive web Art Engine. The system combines **persistent state**, **3D interactive experience**, and **venue/user-level licensing** to transform public screens into shared cultural memory spaces.
 ---
 
-![App Homepage](wireframes/app_homepage.png)
+![App Homepage](readme_images/app_homepage.png)
 
 ---
 
@@ -76,22 +76,22 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 I used Agile development with Epic Stories and used MOSCOW priorties to help build out the MVP. Here's the stage of the project so far: 
 
 ### Landing page with embedded Interactive Artwork that everyone can submit messages
-![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
+![Home Page with embedded Public Artwork](readme_images/home_page_02.png)
 
 ### Users choose which Artwork Version they want
-![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
+![iPad Device Versions Page](readme_images/iPad_device_versions_page.png)
 
 ### Artwork Instance View
 Displays the main interactive artwork instance as seen by users.
-![Artwork Instance](wireframes/artwork_instance.png)
+![Artwork Instance](readme_images/artwork_instance.png)
 
 ### Login Page
 User authentication screen.
-![Login Page](wireframes/login_page.png)
+![Login Page](readme_images/login_page.png)
 
 ### User Dashboard
 Overview of user activity and artwork instances.
-![User Dashboard](wireframes/user_dashboard.png)
+![User Dashboard](readme_images/user_dashboard.png)
 
 ---
 
@@ -208,11 +208,11 @@ Here is the core user shared interaction
 
 ### User Input Message (Desktop)
 Panel selection in the 3D scene triggers a modal for text submission.
-![Input Message Desktop](wireframes/input_message_desktop.png)
+![Input Message Desktop](readme_images/input_message_desktop.png)
 
 ### Learn More (Desktop)
 Expanding a panel reveals more about the message and the user.
-![Learn More Desktop](wireframes/learn_more_desktop.png)
+![Learn More Desktop](readme_images/learn_more_desktop.png)
 
 ---                     
 
@@ -362,7 +362,7 @@ Users license Artwork instances; each instance is based on a template and stores
 
 ### Licensing Validation Proof
 Screen showing license validation for venues.
-![Licensing Validation Proof](wireframes/licensing_validation_proof.png)
+![Licensing Validation Proof](readme_images/licensing_validation_proof.png)
 
 ---
 
@@ -397,20 +397,20 @@ Wireframes showing the app at various screen widths:
   <tr>
     <td align="center">
       <b>On mobile phone devices - width 425px:</b><br>
-      <img src="wireframes/max_width_425px.png" alt="Max Width 425px" width="220"/>
+      <img src="readme_images/max_width_425px.png" alt="Max Width 425px" width="220"/>
     </td>
     <td align="center">
       <b>On bigger mobile phone devices - Min width 768px:</b><br>
-      <img src="wireframes/max_width_768px.png" alt="Max Width 768px" width="220"/>
+      <img src="readme_images/max_width_768px.png" alt="Max Width 768px" width="220"/>
     </td>
   </tr>
 </table>
 
  **On laptops / Desktop Computers - Min width 1024px:**
-  ![Max Width 1024px](wireframes/max_width_1024px.png)
+  ![Max Width 1024px](readme_images/max_width_1024px.png)
 
  **On large Desktop Computers / TV screens / Projectors - Min width 2560px:**
-  ![Max Width 2560px B](wireframes/max_width_2560px_B.png)
+  ![Max Width 2560px B](readme_images/max_width_2560px_B.png)
 
 ---
 
@@ -583,7 +583,7 @@ class FirestoreIntegrationTest(TestCase):
 ## Performance Testing
 ### Lighthouse Test Results
 Performance and accessibility test results for the app.
-![Lighthouse Test](wireframes/lighthouse_test.png)
+![Lighthouse Test](readme_images/lighthouse_test.png)
 
 ---
 
