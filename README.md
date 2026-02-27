@@ -332,6 +332,8 @@ Screen showing license validation for venues.
 
 ---
 
+# Design
+
 ## Color Palette & Typography
 
 | Purpose    | Color       | Hex     |
@@ -393,7 +395,8 @@ Wireframes showing the app at various screen widths:
 ---
 
 # Testing
-## Django Test
+
+## Django Tests
 
 * Django unit tests for models & business logic for licensing 
 ## Firestore Integration Tests (artworks/tests.py)
