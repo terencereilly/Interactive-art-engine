@@ -25,6 +25,7 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 * [Design](#design)
 * [Responsive Breakpoints](#responsive-breakpoints)
 * [Components & Layout Map](#components--layout-map)
+Core Challenges & How I Solved Them
 * [Testing](#testing)
 * [Getting Started](#getting-started)
 * [Future Enhancements](#future-enhancements)
@@ -421,6 +422,77 @@ Wireframes showing the app at various screen widths:
 | Close Button             | Closes overlay                     |
 
 ---
+
+## Core Challenges & How I Solved Them
+
+### Technical Challenges Solved
+
+Below are the major architectural challenges I faced and how they were fixed.
+
+---
+
+#### Per-Instance Firestore Collections & Demo / Production Isolation
+
+**The Problem**
+- All artworks wrote to a single messages collection.
+- Demo browsing mutated production data.
+- No separation between instances.
+- No separation between demo and licensed modes.
+- Increased quota usage.
+- No safe testing environment.
+
+**The Solution**
+
+1. **Instance-Level Isolation**
+   - Dynamic collection names via Django:  
+     `?collection=messages_<uuid>`
+   - One collection per licensed instance.
+
+2. **Demo / Production - Level Isolation**
+   - Storage abstraction layer (`dbApi`) switches between backends:
+     - Demo → `localStorage` (no persistent writes)
+     - Licensed → Firestore (persistent writes)
+   - No Firestore access without collection param.
+
+---
+
+#### License & Instance Control Simplification
+
+**The Over-Engineered Approach**
+- Originally, Django mediated every user interaction: each frontend action had to go through the backend to check accounts, validate licenses, and then trigger Firestore writes.
+- This added complexity, latency, and maintenance overhead, even though Django only needed to track `ArtworkInstance` creation and license flags.
+
+**The Simplified Solution**
+- Frontend now writes directly to Firestore.
+- License state (`licenseValid`, `expiresAt`) is injected from Django and included with each write.
+- Firestore security rules enforce license validity automatically:
+  - `licenseValid == true`
+  - `expiresAt > request.time`
+- Django remains the source of truth for:
+  - Creating and updating `ArtworkInstance` records
+  - Managing license metadata
+- No backend round-trips are needed for routine interactions.
+
+---
+
+**Outcome**
+- Lightweight, scalable architecture
+- Clear separation of responsibilities: frontend handles interactions, backend handles license authority
+- Safe, persistent, and venue-ready artwork licensing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Testing
 
