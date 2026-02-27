@@ -127,7 +127,49 @@ graph TD
 ---
 
 # Wireframe Design
-Below are the wireframe designs for the application, showing key screens and responsive layouts:
+Below are the wireframe design for both the 
+
+- The Interactive Art Engine
+- The persistent state interactive Artwork 
+
+## The Interactive Art Engine
+
++------------------------------------------------------+
+| Interactive Art Engine                               |
+|------------------------------------------------------|
+| [Title]         [About] [Dashboard] [Login/Register] |
++------------------------------------------------------+
+| Nav:                                                 |
+| - Title: "Messages to the Future"                    |
+| - Subtitle: "License & run your own copy of this     |
+| - evolving interactive artwork                       |
+| - About [Artwork + Artist]                           |
+| - About [Artwork + Artist]                           |
++------------------------------------------------------+
+| Browse Artwork Versions:                             |
+| - Artwork Instance [A, B ...]                        |
+| - Artwork image/preview [iframe with local storage]  |
+| - Get Instance [Own your own License]                |
+| - View Details / Edit                                |
++------------------------------------------------------+
+| Dashboard:                                           |
+| - User info                                          |
+| - List of users Artwork Instances + ID's             |
+| - License Start + End Dates                          |
+| - End License Anytime [Deactivate License]           |
+| - Analytics summary [Number of Interactions]         |
++------------------------------------------------------+
+| Responsive Layout:                                   |
+| - Mobile: Stacked panels, hamburger menu             |
+| - Tablet: Horizontal panels, collapsible sidebar     |
+| - Desktop: Full 3D canvas                            |
++------------------------------------------------------+
+| Footer:                                              |
+| - Links: About, Contact, Terms, GitHub               |
++------------------------------------------------------+
+
+## The persistent state interactive artwork 
+Here is the core user shared interaction 
 
 ### User Input Message (Desktop)
 Panel selection in the 3D scene triggers a modal for text submission.
@@ -138,6 +180,32 @@ Expanding a panel reveals more about the message and the user.
 ![Learn More Desktop](wireframes/learn_more_desktop.png)
 
 ---
+ 
+ ///////// TO DO 
+/////////
+# Features Overview 
+Features Overview:                                   
+| - Persistent Interactive Artworks                    
+| - Licensing & Orchestration                         
+| - Front-End Interactivity (React + Three.js)         
+| - Data & Analytics   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Core Models
 
@@ -176,7 +244,6 @@ Users own many instances; each instance is based on a template and stores its me
 | email         | Email address             |
 | password      | Hashed password           |
 | date_joined   | Account creation date     |
-| ...           | Other default fields      |
 
 One user can own multiple artwork instances. Uses Django’s default `AbstractUser`.
 
@@ -193,9 +260,6 @@ Represents a version/type of artwork (e.g., “Artwork 1A”).
 | created_at    | Creation timestamp                |
 | is_active     | Is template active?               |
 
-Example row:
-
-`1 | Artwork 1A | v1a | Generative participatory piece | 2026-01-01 | True`
 
 One template can have many user instances.
 
@@ -232,11 +296,10 @@ User
 - An Artwork Template can generate many Artwork Instances.
 - Each user can create only **1 Artwork Instance of each Artwork Template**.
 
-Here's how the unique constraint is implemented:
+Here's how the unique constraint is implemented In Django:
 
 `UNIQUE (user_id, artwork_template_id)`
 
-In Django:
 ```python
 class Meta:
     constraints = [
