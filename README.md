@@ -165,7 +165,7 @@ Below are the wireframe design for both the
 | - Desktop: Full 3D canvas                            |
 +------------------------------------------------------+
 | Footer:                                              |
-| - Links: About, Contact, Terms, GitHub               |
+| - Links: About, Contact, GitHub                      |
 +------------------------------------------------------+
 
 ## The persistent state interactive artwork 
@@ -179,33 +179,36 @@ Panel selection in the 3D scene triggers a modal for text submission.
 Expanding a panel reveals more about the message and the user.
 ![Learn More Desktop](wireframes/learn_more_desktop.png)
 
----
- 
- ///////// TO DO 
-/////////
-# Features Overview 
-Features Overview:                                   
-| - Persistent Interactive Artworks                    
-| - Licensing & Orchestration                         
-| - Front-End Interactivity (React + Three.js)         
-| - Data & Analytics   
+---                     
 
+## Core Features
 
+1. **Licensing & Orchestration**  
+   - Controlled deployment and versioning for each user
+   - License management for artwork instances.
+   - Each users get's their own unique interactive artwork instance. [Which has persistent state built into it]
 
+2. **Admin Dashboard**  
+   - User authentication and management.
+   - Overview of artwork instances and license status.
 
+3. **Artworks that remember everyone's interactions**  
+   - React + Three.js for immersive 3D rendering and user interaction.
+   - Real-time user contributions to collective Artwork
+   - User messages are stored persistently using Firestore database [Already integrated in MVP stage] & soon in the future via Arweave Protocol [Link Text](https://arweave.org/)
 
+4. **Multi-Tenant Architecture (Planned/Future)**  
+   - Permissions, and business logic per venue.
 
+5. **Data & Analytics (Planned/Future)**  
+   - Participation and engagement tracking.
 
+6. **Responsive Interaction Design & user device detection**  
+   - Optimized layouts, design hook & interaction UX for desktop, tablet, and mobile devices. [Making the experience suitable for dfferent user devices and larger screens.]
 
-
-
-
-
-
-
-
-
-
+7. **Security**  
+   - Django checks Firestore rules for user access to update / evolve the interactive artworks.
+   - Django authentication for users and admins.
 
 ## Core Models
 
