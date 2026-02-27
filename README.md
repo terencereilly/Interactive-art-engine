@@ -109,7 +109,7 @@ Overview of user activity and artwork instances.
 
 **Security:** Firestore rules enforce write access only for valid, active licenses; demo mode never writes to Firestore.
 
-**Deployment:** Frontend demo is hosted on Vercel; backend runs locally and on Heroku.
+**Deployment:** Frontend Interactive artworks are hosted on Vercel; backend runs locally and on Heroku.
 
 ### Mermaid Diagram
 
@@ -210,9 +210,21 @@ Expanding a panel reveals more about the message and the user.
    - Django checks Firestore rules for user access to update / evolve the interactive artworks.
    - Django authentication for users and admins.
 
+--- 
+
+# Django [Backend]
+
+**Django handles:**
+- Authentication
+- Instance creation
+- License enforcement
+
+- **Artwork Templates** = master blueprint artworks (A, B ...)
+- **Artwork Instance** = licensed, isolated copy of artwork (A or B ...)
+
 ## Core Models
 
-* **Company** – Licensed venue
+* **User** – Venue, Event, Organisation, Person
 * **Artwork** – Master template for interactive experiences
 * **Artwork Version** – Defines logic, rules, moderation
 * **ArtworkInstance** – Isolated deployment per venue
@@ -231,11 +243,6 @@ Expanding a panel reveals more about the message and the user.
   - `ArtworkInstance` has a foreign key to `User` (many-to-one).
   - `ArtworkInstance` has a foreign key to `ArtworkTemplate` (many-to-one).
 
-**Summary:**  
-Users own many instances; each instance is based on a template and stores its messages in a unique Firestore collection.
-
----
-
 ## Django Database Table Design
 
 ### 1. User (Django’s built-in auth_user)
@@ -247,8 +254,6 @@ Users own many instances; each instance is based on a template and stores its me
 | email         | Email address             |
 | password      | Hashed password           |
 | date_joined   | Account creation date     |
-
-One user can own multiple artwork instances. Uses Django’s default `AbstractUser`.
 
 ### 2. ArtworkTemplate
 
@@ -313,27 +318,12 @@ class Meta:
     ]
 ```
 
-<!-- ArtworkInstance → User (many-to-one)
-Many artwork instances can belong to one user.
-Each instance is owned by exactly one user.
+---
 
-ArtworkInstance → ArtworkTemplate (many-to-one)
-Many artwork instances can be based on one template.
-Each instance is created from exactly one template. -->
+# Firestore
 
-### Conceptual Flow in Your Architecture
-
-- **ArtworkTemplate** = master blueprint (public version)
-- **ArtworkInstance** = licensed, isolated copy
 - **firestore_collection_name** = unique persistent message store
-
-**Django handles:**
-- Authentication
-- Instance creation
-- License enforcement
-
-# Firestore Database
-- Persistent state live messages
+Users license Artwork instances; each instance is based on a template and stores its messages in a unique Firestore collection.
 
 ### Licensing Validation Proof
 Screen showing license validation for venues.
@@ -357,28 +347,35 @@ Screen showing license validation for venues.
 
 # Responsive Breakpoints
 
-| Device  | Width      | Notes             |
-| ------- | ---------- | ----------------- |
-| Mobile  | 0–600px    | Stacked layout    |
-| Tablet  | 601–1024px | Horizontal panels |
-| Desktop | 1025+px    | Full 3D canvas    |
+| Device  | Width       | Notes             |
+| ------- | ----------  | ----------------- |
+| Mobile  | 0–425px     | Stacked layout    |
+| Tablet  | 768–1024px  | Horizontal panels |
+| Desktop | 1024-2560px | Full 3D canvas    |
 
-# Responsive Screenshots
+# Screenshots of Responsive Breakpoints
 Wireframes showing the app at various screen widths:
 
-- **Max width 425px:**
-  ![Max Width 425px](wireframes/max_width_425px.png)
-- **Max width 768px:**
-  ![Max Width 768px](wireframes/max_width_768px.png)
-- **Max width 768px (B):**
-  ![Max Width 768px B](wireframes/max_width_768px_B.png)
-- **Max width 1024px:**
+<table>
+  <tr>
+    <td align="center">
+      <b>On mobile phone devices - width 425px:</b><br>
+      <img src="wireframes/max_width_425px.png" alt="Max Width 425px" width="220"/>
+    </td>
+    <td align="center">
+      <b>On bigger mobile phone devices - Min width 768px:</b><br>
+      <img src="wireframes/max_width_768px.png" alt="Max Width 768px" width="220"/>
+    </td>
+  </tr>
+</table>
+
+ **On laptops / Desktop Computers - Min width 1024px:**
   ![Max Width 1024px](wireframes/max_width_1024px.png)
-- **Max width 2560px:**
-  ![Max Width 2560px](wireframes/max_width_2560px.png)
-- **Max width 2560px (B):**
+
+ **On large Desktop Computers / TV screens / Projectors - Min width 2560px:**
   ![Max Width 2560px B](wireframes/max_width_2560px_B.png)
 
+---
 
 
 
@@ -414,7 +411,7 @@ Responsive layout for mobile devices.
 
 | Component                | Description                        |
 | ------------------------ | ---------------------------------- |
-| Title Overlay            | Hero / intro title                 |
+| Title Overlay            | Intro title to help onboarding     |
 | Canvas Full              | 3D tunnel, wall cells, MapControls |
 | Top-Right Controls       | Reset camera, toggle day/night     |
 | Contributions Panel      | Shows submitted messages           |
@@ -423,17 +420,6 @@ Responsive layout for mobile devices.
 | Close Button             | Closes overlay                     |
 
 ---
-
-## Tech Stack
-
-* Django – Backend orchestration & multi-tenant logic
-* Firestore – Persistent state & real-time updates
-* React + Three.js – 3D interactive frontend
-* Bootstrap 5 – Responsive UI
-* JS / TS – Frontend logic
-
----
-
 
 
 
@@ -594,9 +580,7 @@ Performance and accessibility test results for the app.
   - Apply version-specific moderation logic  
   - Fetch instance config from Django  
 
-- **Firestore:**  
-  - Persistent messages stored per instance `<UUID>`  
-  - Each new instance gets its own collection  
+
 
 - **Out-of-scope / Future:**  
   - Multi-tenant orchestration  
@@ -639,3 +623,5 @@ This diagram shows how multiple companies can each have **one active artwork ins
 ### Homepage (Desktop)
 Intro sequence for desktop users, showing the landing page and navigation.
 ![Homepage Desktop](wireframes/homepage_desktop.png)
+
+  ![Max Width 768px B](wireframes/max_width_768px_B.png)
