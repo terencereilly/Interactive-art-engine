@@ -25,7 +25,7 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 * [Design](#design)
 * [Responsive Breakpoints](#responsive-breakpoints)
 * [Components & Layout Map](#components--layout-map)
-Core Challenges & How I Solved Them
+* [Core Challenges & Solutions](#core-challenges--solutions)
 * [Testing](#testing)
 * [Getting Started](#getting-started)
 * [Future Enhancements](#future-enhancements)
@@ -423,10 +423,7 @@ Wireframes showing the app at various screen widths:
 
 ---
 
-## Core Challenges & How I Solved Them
-
-### Technical Challenges Solved
-
+## Core Challenges & Solutions
 Below are the major architectural challenges I faced and how they were fixed.
 
 ---
