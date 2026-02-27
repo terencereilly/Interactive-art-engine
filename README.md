@@ -41,10 +41,10 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 ## Project Overview
 
-**Messages to the Future** / **Interactive Art Engine** enables:
+**The Interactive Art Engine** for **Messages to the Future** project enables:
 
-* **Persistent Interactive Artworks** – 3D experiences with isolated instances per venue.
 * **Licensing & Orchestration** – Controlled deployment and versioning per venue.
+* **Persistent Interactive Artworks** – Participatory Interactive experiences with isolated instances per user/ venue.
 * **Front-End Interactivity** – React + Three.js rendering with live user submissions.
 * **Data & Analytics (Future)** – Participation and engagement tracking.
 * **Multi-Tenant Architecture (Future)** – Separate instances, permissions, and business logic per venue.
