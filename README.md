@@ -432,9 +432,7 @@ Wireframes showing the app at various screen widths:
 ## Core Challenges & Solutions
 Below are the major architectural challenges I faced and how they were fixed.
 
----
-
-#### Per-Instance Firestore Collections & Demo / Production Isolation
+### 1. Per-Instance Firestore Collections & Demo / Production Isolation
 
 **The Problem**
 - All artworks wrote to a single messages collection.
@@ -446,12 +444,12 @@ Below are the major architectural challenges I faced and how they were fixed.
 
 **The Solution**
 
-1. **Instance-Level Isolation**
+A. **Instance-Level Isolation**
    - Dynamic collection names via Django:  
      `?collection=messages_<uuid>`
    - One collection per licensed instance.
 
-2. **Demo / Production - Level Isolation**
+B. **Demo / Production - Level Isolation**
    - Storage abstraction layer (`dbApi`) switches between backends:
      - Demo → `localStorage` (no persistent writes)
      - Licensed → Firestore (persistent writes)
@@ -459,7 +457,7 @@ Below are the major architectural challenges I faced and how they were fixed.
 
 ---
 
-#### License & Instance Control Simplification
+### 2. License & Instance Control Simplification
 
 **The Over-Engineered Approach**
 - Originally, Django mediated every user interaction: each frontend action had to go through the backend to check accounts, validate licenses, and then trigger Firestore writes.
@@ -476,27 +474,70 @@ Below are the major architectural challenges I faced and how they were fixed.
   - Managing license metadata
 - No backend round-trips are needed for routine interactions.
 
----
-
 **Outcome**
 - Lightweight, scalable architecture
 - Clear separation of responsibilities: frontend handles interactions, backend handles license authority
 - Safe, persistent, and venue-ready artwork licensing
 
+### 3. Cloud Credential Management (Heroku Deployment)
 
+**The Problem**  
+Firebase Admin credentials stored locally could not be accessed in production (Heroku).
 
+**The Solution**  
+- Firebase service account JSON stored as a Heroku config variable
+- Written to file at runtime
+- Firebase Admin SDK initialized from that path
 
+**This enabled:**  
+- Secure cloud deployment
+- No committed credentials
+- Environment-based configuration
 
+### 4. Single Artwork Instance Enforcement
 
+**The Problem**  
+Users should only be able to create one active instance per artwork template.
 
+**The Solution**  
+- A database-level constraint:  
+  `UNIQUE (user_id, artwork_template_id)`
 
+**This ensures:**  
+- One licensed instance per user per template
+- Clean renewal logic
+- No duplicate collection ownership
 
+### 5. Realtime Listener Over-Subscription
 
+**The Problem**  
+Improper cleanup of Firestore `onSnapshot()` listeners caused:
+- Duplicate data events
+- Increased read usage
+- Performance degradation
 
+**The Solution**  
+- Proper `useEffect` cleanup
+- Listener unsubscription on component unmount
+- Single listener per collection instance
 
+**This reduced quota waste and stabilized realtime updates.**
 
+### How the Architecture Evolved
 
+The system grew through four stages:
+1. **Shared-state prototype** – all users and artworks wrote to the same collection.
+2. **URL-scoped instance isolation** – each artwork instance got a unique Firestore collection.
+3. **Backend-governed licensing** – Django manages license state, ensuring only valid instances can write.
+4. **Production-ready cloud deployment** – safe, multi-tenant, scalable environment.
 
+**Now, the system is:**
+- License-aware – only valid licensed instances can persist data.
+- Multi-tenant – supports multiple users and artworks independently.
+- Instance-scoped – each artwork instance has its own isolated data.
+- Realtime interactive artwork engine – frontend writes directly to Firestore for fast, live interactions.
+
+---
 ## Testing
 
 ### Django Tests
