@@ -129,10 +129,6 @@ graph TD
 # Wireframe Design
 Below are the wireframe designs for the application, showing key screens and responsive layouts:
 
-### Homepage (Desktop)
-Intro sequence for desktop users, showing the landing page and navigation.
-![Homepage Desktop](wireframes/homepage_desktop.png)
-
 ### User Input Message (Desktop)
 Panel selection in the 3D scene triggers a modal for text submission.
 ![Input Message Desktop](wireframes/input_message_desktop.png)
@@ -222,7 +218,7 @@ Example row:
 
 `15 | 3 | 1 | messages_user3_v1a_15 | 2026-02-01 | 2026-03-01 | True | 2026-02-01`
 
-### Relationship Diagram (Text ERD)
+### Relationship Diagram
 
 ```
 User
@@ -583,3 +579,14 @@ This diagram shows how multiple companies can each have **one active artwork ins
 
 ---
 
+
+
+
+
+
+
+
+# Extra Screensots - Might not use 
+### Homepage (Desktop)
+Intro sequence for desktop users, showing the landing page and navigation.
+![Homepage Desktop](wireframes/homepage_desktop.png)
