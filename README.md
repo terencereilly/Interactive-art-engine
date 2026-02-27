@@ -2,6 +2,7 @@
 # Interactive Art Engine
 
 An interactive web Art Engine. The system combines **persistent state**, **3D interactive experience**, and **venue/user-level licensing** to transform public screens into shared cultural memory spaces.
+
 ---
 
 ![App Homepage](readme_images/app_homepage.png)
