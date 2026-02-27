@@ -75,12 +75,12 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 ---
 
-## MVP Version [Completed]
+# MVP Version [Completed]
 
-![Home Page with embedded Public Artwork](wireframes/home_page_01.png)
+### Landing page with embedded Public [Open] Interactive Artwork
+![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
 
-### Device Versions Page (iPad)
-Responsive layout for iPad devices.
+### Users choose which Artwork Version they want
 ![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
 
 ### Artwork Instance View
@@ -126,64 +126,6 @@ graph TD
 
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
-
-# Web App [UX & UI Design]
-
-### Home Page
-
-
-### Device Versions Page
-Responsive layout for iPad devices.
-![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
-
-
-
-### Device Versions Page (Mobile)
-Responsive layout for mobile devices.
-![Mobile Device Versions Page](wireframes/mobile_device_versions_page.png)
-
-### Artwork Instance View
-Displays the main interactive artwork instance as seen by users.
-![Artwork Instance](wireframes/artwork_instance.png)
-
-### Login Page
-User authentication screen.
-![Login Page](wireframes/login_page.png)
-
-### User Dashboard
-Overview of user activity and artwork instances.
-![User Dashboard](wireframes/user_dashboard.png)
-
-
-
-
-
-
-
----
-
 # Wireframe Design
 Below are the wireframe designs for the application, showing key screens and responsive layouts:
 
@@ -200,31 +142,6 @@ Expanding a panel reveals more about the message and the user.
 ![Learn More Desktop](wireframes/learn_more_desktop.png)
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Core Models
 
@@ -413,6 +330,39 @@ Wireframes showing the app at various screen widths:
 
 
 
+
+
+
+# Web App [UX & UI Design]
+
+### Home Page
+![Home Page with embedded Public Artwork](wireframes/home_page_01.png)
+
+### Device Versions Page
+Responsive layout for iPad devices.
+![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
+
+
+
+### Device Versions Page (Mobile)
+Responsive layout for mobile devices.
+![Mobile Device Versions Page](wireframes/mobile_device_versions_page.png)
+
+### Artwork Instance View
+Displays the main interactive artwork instance as seen by users.
+![Artwork Instance](wireframes/artwork_instance.png)
+
+### Login Page
+User authentication screen.
+![Login Page](wireframes/login_page.png)
+
+### User Dashboard
+Overview of user activity and artwork instances.
+![User Dashboard](wireframes/user_dashboard.png)
+
+
+
+
 ---
 
 ## Components & Layout Map
@@ -438,6 +388,14 @@ Wireframes showing the app at various screen widths:
 * JS / TS – Frontend logic
 
 ---
+
+
+
+
+
+
+
+
 
 ## Getting Started
 
