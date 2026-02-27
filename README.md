@@ -132,7 +132,7 @@ Below are the wireframe design for both the
 - The Interactive Art Engine
 - The persistent state interactive Artwork 
 
-## The Interactive Art Engine
+## The Interactive Art Engine [The System]
 
 +------------------------------------------------------+
 | Interactive Art Engine                               |
@@ -168,7 +168,7 @@ Below are the wireframe design for both the
 | - Links: About, Contact, GitHub                      |
 +------------------------------------------------------+
 
-## The persistent state interactive artwork 
+## Wireframe Design for the interactive artwork [The Product]
 Here is the core user shared interaction 
 
 ### User Input Message (Desktop)
