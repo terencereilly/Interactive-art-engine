@@ -3,7 +3,7 @@
 
 An interactive web Art Engine. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
 
-# Project links
+## Project links
 
 - **App [MVP]** -- [Interactive Art Engine App](https://interactive-art-engine-3b2925832eca.herokuapp.com/)
 - **Github Project Board** - https://github.com/users/terencereilly/projects/6
