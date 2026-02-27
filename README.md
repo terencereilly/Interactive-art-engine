@@ -243,7 +243,7 @@ More explicitly:
   - One User
   - One ArtworkTemplate
 
-### Important Constraint (Your Business Rule)
+### Important Constraint (The Business Rule)
 
 Each user can create **1 artwork instance of each artwork version**.
 
