@@ -338,23 +338,17 @@ Wireframes showing the app at various screen widths:
 Responsive layout for iPad devices.
 ![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
 
-
-
 ### Device Versions Page (Mobile)
 Responsive layout for mobile devices.
 ![Mobile Device Versions Page](wireframes/mobile_device_versions_page.png)
 
-### Artwork Instance View
-Displays the main interactive artwork instance as seen by users.
-![Artwork Instance](wireframes/artwork_instance.png)
 
-### Login Page
-User authentication screen.
-![Login Page](wireframes/login_page.png)
 
-### User Dashboard
-Overview of user activity and artwork instances.
-![User Dashboard](wireframes/user_dashboard.png)
+
+
+
+
+
 
 
 
