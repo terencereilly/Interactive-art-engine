@@ -4,6 +4,15 @@
 An interactive web Art Engine. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
 
 **Live App** (View Here) > [Interactive Art Engine App](https://interactive-art-engine-3b2925832eca.herokuapp.com/)
+
+
+### Home Page
+Responsive layout for iPad devices.
+![Home Page with embedded Public Artwork](wireframes/home_page_01.png)
+
+
+
+
 ![Wireframe 1](wireframes/app_homepage.png)
 
 ---
@@ -41,8 +50,6 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 ---
 
-
-
 ## Conceptual Framework
 
 ### Philosophical Purpose
@@ -54,9 +61,10 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 ### Product Purpose
 
 **MVP Functionality**
+**ArtworkInstance**
 
 * License an artwork
-* Generate isolated **ArtworkInstance**
+* Generate isolated 
 * Apply version-specific logic and moderation
 * Deploy artwork to venue screens
 
@@ -92,9 +100,23 @@ Expanding a panel reveals more about the message and the user.
 
 
 
-# Web App Pages [UX & UI Design]
+
+
+
+
+
+
+
+
+# Web App [UX & UI Design]
 
 ### Home Page
+![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
+
+### Device Versions Page
+Responsive layout for iPad devices.
+![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
+
 
 
 ### Device Versions Page (iPad)
