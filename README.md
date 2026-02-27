@@ -15,6 +15,11 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 * [Project Overview](#project-overview)
 * [Conceptual Framework](#conceptual-framework)
 * [System Architecture](#system-architecture)
+MVP
+Technical Summary
+About the Interactive Artwork 
+
+
 * [Core Models](#core-models)
 * [Wireframe Design](#wireframe-design)
 * [Color Palette & Typography](#color-palette--typography)
@@ -62,27 +67,6 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 ---
 
-## About the Artwork [Messages to the Future]
-This is a time-based interactive artwork that invites people to leave short messages, reflections, or wishes for future generations.
-
-**One artwork. Multiple creative systems. [Future Plans]**
-Each version contains different built-in logic, designed to suit different venues, audiences, and purposes — whether in a gallery, public space, school, festival, or cultural institution.
-
-Some versions explore ideas like:
-- Time as a moral force
-- Location-sensitive memory
-- The future reshaping the past
-- Weighted or evolving collective memory
-
----
-
-# How to Participate
-
-- Click an empty panel to leave your message.
-- Click a panel with a message to read more about the person who wrote it.
-
----
-
 ## System Architecture
 
 ### Layered Structure
@@ -93,7 +77,8 @@ Some versions explore ideas like:
 
 ---
 
-# MVP Version [Completed]
+## MVP [Completed]
+I used Agile development with Epic Stories and used MOSCOW priorties to help build out the MVP. Here's the stage of the project so far: 
 
 ### Landing page with embedded Interactive Artwork that everyone can submit messages
 ![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
@@ -144,7 +129,34 @@ graph TD
 
 ---
 
-# Wireframe Design
+## About the Interactive Artwork [Messages to the Future]
+
+**What is it?**
+
+This is a time-based interactive artwork that invites people to leave short messages, reflections, or wishes for future generations.
+
+**Different Versions of the Artwork** - [Future Plans]
+
+**One artwork. Multiple creative systems. 
+Each version contains different built-in logic, designed to suit different venues, audiences, and purposes — whether in a gallery, public space, school, festival, or cultural institution.
+
+**Some Artwork versions I will explore are ideas like:**
+
+- Time as a moral force
+- Location-sensitive memory
+- The future reshaping the past
+- Weighted or evolving collective memory
+
+
+**How to participate in the artwork**
+
+- Click an empty panel to leave your message.
+- Input name, location [Optional] - [Future Plans]
+- Click a panel with a message to read more about the person who wrote it.
+
+---
+
+## Wireframe Design
 Below are the wireframe design for both the 
 
 - The Interactive Art Engine
