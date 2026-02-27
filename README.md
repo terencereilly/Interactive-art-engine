@@ -214,9 +214,6 @@ Represents a licensed copy owned by a specific user.
 | is_active                  | Is license active?                         |
 | created_at                 | Instance creation timestamp                |
 
-Example row:
-
-`15 | 3 | 1 | messages_user3_v1a_15 | 2026-02-01 | 2026-03-01 | True | 2026-02-01`
 
 ### Relationship Diagram
 
@@ -229,21 +226,13 @@ User
   ArtworkTemplate ── 1 ──┘
 ```
 
-More explicitly:
-
-`User (1) -------- (∞) ArtworkInstance (∞) -------- (1) ArtworkTemplate`
-
-- A User can have many ArtworkInstances.
-- An ArtworkTemplate can have many ArtworkInstances.
-- Each ArtworkInstance belongs to exactly:
-  - One User
-  - One ArtworkTemplate
 
 ### Important Constraint (The Business Rule)
 
-Each user can create **1 artwork instance of each artwork version**.
+- An Artwork Template can generate many Artwork Instances.
+- Each user can create only **1 Artwork Instance of each Artwork Template**.
 
-Add a unique constraint:
+Here's how the unique constraint is implemented:
 
 `UNIQUE (user_id, artwork_template_id)`
 
