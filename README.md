@@ -3,17 +3,9 @@
 
 An interactive web Art Engine. The system combines **persistent state**, **3D interactive experiences**, and **venue-level licensing** to transform public screens into shared cultural memory spaces.
 
-**Live App** (View Here) > [Interactive Art Engine App](https://interactive-art-engine-3b2925832eca.herokuapp.com/)
-
-
-### Home Page
-Responsive layout for iPad devices.
-![Home Page with embedded Public Artwork](wireframes/home_page_01.png)
-
-
-
-
 ![Wireframe 1](wireframes/app_homepage.png)
+
+**Live App** (View Here) > [Interactive Art Engine App](https://interactive-art-engine-3b2925832eca.herokuapp.com/)
 
 ---
 
@@ -32,9 +24,6 @@ Responsive layout for iPad devices.
 * [Testing](#testing)
 * [Future Enhancements](#future-enhancements)
 * [Author](#author)
-
-
-
 
 ---
 
@@ -76,6 +65,125 @@ Responsive layout for iPad devices.
 
 ---
 
+## System Architecture
+
+### Layered Structure
+
+* **Control Layer (Django)** – Authentication, licensing, multi-tenant orchestration
+* **Memory Layer (Firestore)** – Persistent state per instance, real-time updates
+* **Experience Layer (React + Three.js)** – 3D rendering, user interactions, versioned logic
+
+---
+
+## MVP Version [Completed]
+
+![Home Page with embedded Public Artwork](wireframes/home_page_01.png)
+
+### Device Versions Page (iPad)
+Responsive layout for iPad devices.
+![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
+
+### Artwork Instance View
+Displays the main interactive artwork instance as seen by users.
+![Artwork Instance](wireframes/artwork_instance.png)
+
+### Login Page
+User authentication screen.
+![Login Page](wireframes/login_page.png)
+
+### User Dashboard
+Overview of user activity and artwork instances.
+![User Dashboard](wireframes/user_dashboard.png)
+
+---
+
+## Technical Summary
+
+**Backend:** Django project with apps for artwork templates and licensed instances. Handles user authentication, instance creation, and serves dynamic templates.
+
+**Database:** Uses Firestore for persistent storage of messages per artwork instance, with license-based Firestore rules.
+
+**Frontend:** Artwork UI (React/Three.js) is embedded via iframe; uses FirestoreOlta.js for Firestore integration or browser localStorage for demo mode.
+
+**Integration:** Instance data (license, collection ID, etc.) is passed from Django to the frontend via template-injected JavaScript.
+
+**Security:** Firestore rules enforce write access only for valid, active licenses; demo mode never writes to Firestore.
+
+**Deployment:** Frontend demo is hosted on Vercel; backend runs locally and on Heroku.
+
+### Mermaid Diagram
+
+```mermaid
+graph TD
+    A[User / Venue] -->|Interacts| C[Frontend: React + Three.js]
+    C -->|Sends / Reads Data| B[Firestore: Persistent State]
+    C -->|Fetch Config| D[Django Backend: Control Layer]
+    D -->|Manages Instances & Permissions| B
+    D -->|API / Licensing| C
+```
+
+*Shows the flow from user actions → 3D frontend → persistent Firestore state → Django orchestration layer.*
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
+
+# Web App [UX & UI Design]
+
+### Home Page
+
+
+### Device Versions Page
+Responsive layout for iPad devices.
+![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
+
+
+
+### Device Versions Page (Mobile)
+Responsive layout for mobile devices.
+![Mobile Device Versions Page](wireframes/mobile_device_versions_page.png)
+
+### Artwork Instance View
+Displays the main interactive artwork instance as seen by users.
+![Artwork Instance](wireframes/artwork_instance.png)
+
+### Login Page
+User authentication screen.
+![Login Page](wireframes/login_page.png)
+
+### User Dashboard
+Overview of user activity and artwork instances.
+![User Dashboard](wireframes/user_dashboard.png)
+
+
+
+
+
+
+
+---
+
 # Wireframe Design
 Below are the wireframe designs for the application, showing key screens and responsive layouts:
 
@@ -108,36 +216,6 @@ Expanding a panel reveals more about the message and the user.
 
 
 
-# Web App [UX & UI Design]
-
-### Home Page
-![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
-
-### Device Versions Page
-Responsive layout for iPad devices.
-![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
-
-
-
-### Device Versions Page (iPad)
-Responsive layout for iPad devices.
-![iPad Device Versions Page](wireframes/iPad_device_versions_page.png)
-
-### Device Versions Page (Mobile)
-Responsive layout for mobile devices.
-![Mobile Device Versions Page](wireframes/mobile_device_versions_page.png)
-
-### Artwork Instance View
-Displays the main interactive artwork instance as seen by users.
-![Artwork Instance](wireframes/artwork_instance.png)
-
-### Login Page
-User authentication screen.
-![Login Page](wireframes/login_page.png)
-
-### User Dashboard
-Overview of user activity and artwork instances.
-![User Dashboard](wireframes/user_dashboard.png)
 
 
 
@@ -147,44 +225,6 @@ Overview of user activity and artwork instances.
 
 
 
-## System Architecture
-
-### Layered Structure
-
-* **Control Layer (Django)** – Authentication, licensing, multi-tenant orchestration
-* **Memory Layer (Firestore)** – Persistent state per instance, real-time updates
-* **Experience Layer (React + Three.js)** – 3D rendering, user interactions, versioned logic
-
----
-
-## Technical Summary
-
-**Backend:** Django project with apps for artwork templates and licensed instances. Handles user authentication, instance creation, and serves dynamic templates.
-
-**Database:** Uses Firestore for persistent storage of messages per artwork instance, with license-based Firestore rules.
-
-**Frontend:** Artwork UI (React/Three.js) is embedded via iframe; uses FirestoreOlta.js for Firestore integration or browser localStorage for demo mode.
-
-**Integration:** Instance data (license, collection ID, etc.) is passed from Django to the frontend via template-injected JavaScript.
-
-**Security:** Firestore rules enforce write access only for valid, active licenses; demo mode never writes to Firestore.
-
-**Deployment:** Frontend demo is hosted on Vercel; backend runs locally and on Heroku.
-
-### Mermaid Diagram
-
-```mermaid
-graph TD
-    A[User / Venue] -->|Interacts| C[Frontend: React + Three.js]
-    C -->|Sends / Reads Data| B[Firestore: Persistent State]
-    C -->|Fetch Config| D[Django Backend: Control Layer]
-    D -->|Manages Instances & Permissions| B
-    D -->|API / Licensing| C
-```
-
-*Shows the flow from user actions → 3D frontend → persistent Firestore state → Django orchestration layer.*
-
----
 
 ## Core Models
 
