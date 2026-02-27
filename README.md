@@ -15,19 +15,18 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 * [Project Overview](#project-overview)
 * [Conceptual Framework](#conceptual-framework)
 * [System Architecture](#system-architecture)
-MVP
-Technical Summary
-About the Interactive Artwork 
-
-
-* [Core Models](#core-models)
+* [MVP](#mvp)
+* [Technical Summary](#technical-summary)
+* [About the Interactive Artwork](#about-the-interactive-artwork-messages-to-the-future) 
 * [Wireframe Design](#wireframe-design)
-* [Color Palette & Typography](#color-palette--typography)
+* [Core Features](#core-features)
+* [Backend Development](#backend-development-django)
+* [Firestore](#firestore)
+* [Design](#design)
 * [Responsive Breakpoints](#responsive-breakpoints)
 * [Components & Layout Map](#components--layout-map)
-* [Tech Stack](#tech-stack)
-* [Getting Started](#getting-started)
 * [Testing](#testing)
+* [Getting Started](#getting-started)
 * [Future Enhancements](#future-enhancements)
 * [Author](#author)
 
@@ -77,7 +76,7 @@ About the Interactive Artwork
 
 ---
 
-## MVP [Completed]
+## MVP
 I used Agile development with Epic Stories and used MOSCOW priorties to help build out the MVP. Here's the stage of the project so far: 
 
 ### Landing page with embedded Interactive Artwork that everyone can submit messages
@@ -242,7 +241,7 @@ Expanding a panel reveals more about the message and the user.
 
 --- 
 
-# Django [Backend]
+## Backend Development [Django]
 
 **Django handles:**
 - Authentication
@@ -252,7 +251,7 @@ Expanding a panel reveals more about the message and the user.
 - **Artwork Templates** = master blueprint artworks (A, B ...)
 - **Artwork Instance** = licensed, isolated copy of artwork (A or B ...)
 
-## Core Models
+### Core Models
 
 * **User** – Venue, Event, Organisation, Person
 * **Artwork** – Master template for interactive experiences
@@ -350,7 +349,7 @@ class Meta:
 
 ---
 
-# Firestore
+## Firestore
 
 - **firestore_collection_name** = unique persistent message store
 Users license Artwork instances; each instance is based on a template and stores its messages in a unique Firestore collection.
@@ -361,7 +360,7 @@ Screen showing license validation for venues.
 
 ---
 
-# Design
+## Design
 
 ## Color Palette & Typography
 
@@ -377,7 +376,7 @@ Screen showing license validation for venues.
 
 ---
 
-# Responsive Breakpoints
+## Responsive Breakpoints
 
 | Device  | Width       | Notes             |
 | ------- | ----------  | ----------------- |
@@ -385,7 +384,7 @@ Screen showing license validation for venues.
 | Tablet  | 768–1024px  | Horizontal panels |
 | Desktop | 1024-2560px | Full 3D canvas    |
 
-# Screenshots of Responsive Breakpoints
+### Screenshots of Responsive Breakpoints
 Wireframes showing the app at various screen widths:
 
 <table>
@@ -423,9 +422,9 @@ Wireframes showing the app at various screen widths:
 
 ---
 
-# Testing
+## Testing
 
-## Django Tests
+### Django Tests
 
 * Django unit tests for models & business logic for licensing 
 ## Firestore Integration Tests (artworks/tests.py)
@@ -511,6 +510,8 @@ class FirestoreIntegrationTest(TestCase):
 ### Lighthouse Test Results
 Performance and accessibility test results for the app.
 ![Lighthouse Test](wireframes/lighthouse_test.png)
+
+---
 
 ## How to Get started with Development
 
