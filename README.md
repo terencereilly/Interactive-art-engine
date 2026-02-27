@@ -14,8 +14,8 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 * [Project Overview](#project-overview)
 * [Conceptual Framework](#conceptual-framework)
-* [System Architecture](#system-architecture)
 * [MVP](#mvp)
+* [System Architecture](#system-architecture)
 * [Technical Summary](#technical-summary)
 * [About the Interactive Artwork](#about-the-interactive-artwork-messages-to-the-future) 
 * [Wireframe Design](#wireframe-design)
@@ -66,16 +66,6 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 ---
 
-## System Architecture
-
-### Layered Structure
-
-* **Control Layer (Django)** – Authentication, licensing, multi-tenant orchestration
-* **Memory Layer (Firestore)** – Persistent state per instance, real-time updates
-* **Experience Layer (React + Three.js)** – 3D rendering, user interactions, versioned logic
-
----
-
 ## MVP
 I used Agile development with Epic Stories and used MOSCOW priorties to help build out the MVP. Here's the stage of the project so far: 
 
@@ -96,6 +86,16 @@ User authentication screen.
 ### User Dashboard
 Overview of user activity and artwork instances.
 ![User Dashboard](wireframes/user_dashboard.png)
+
+---
+
+## System Architecture
+
+### Layered Structure
+
+* **Control Layer (Django)** – Authentication, licensing, multi-tenant orchestration
+* **Memory Layer (Firestore)** – Persistent state per instance, real-time updates
+* **Experience Layer (React + Three.js)** – 3D rendering, user interactions, versioned logic
 
 ---
 
@@ -513,7 +513,7 @@ Performance and accessibility test results for the app.
 
 ---
 
-## How to Get started with Development
+## Getting started
 
 ### Prerequisites
 
