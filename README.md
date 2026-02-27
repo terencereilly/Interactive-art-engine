@@ -48,13 +48,9 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 * Support **collective authorship**, reflection, and engagement
 * Encourage **time-based participation** over passive consumption
 
-### Product Purpose
-
 **MVP Functionality**
-**ArtworkInstance**
 
-* License an artwork
-* Generate isolated 
+* License an unique instance of an interactive artwork 
 * Apply version-specific logic and moderation
 * Deploy artwork to venue screens
 
@@ -63,6 +59,27 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 * Engagement analytics dashboards
 * Multi-artwork licensing
 * AI-assisted moderation and reporting
+
+---
+
+## About the Artwork [Messages to the Future]
+This is a time-based interactive artwork that invites people to leave short messages, reflections, or wishes for future generations.
+
+**One artwork. Multiple creative systems. [Future Plans]**
+Each version contains different built-in logic, designed to suit different venues, audiences, and purposes — whether in a gallery, public space, school, festival, or cultural institution.
+
+Some versions explore ideas like:
+- Time as a moral force
+- Location-sensitive memory
+- The future reshaping the past
+- Weighted or evolving collective memory
+
+---
+
+# How to Participate
+
+- Click an empty panel to leave your message.
+- Click a panel with a message to read more about the person who wrote it.
 
 ---
 
@@ -78,7 +95,7 @@ An interactive web Art Engine. The system combines **persistent state**, **3D in
 
 # MVP Version [Completed]
 
-### Landing page with embedded Public [Open] Interactive Artwork
+### Landing page with embedded Interactive Artwork that everyone can submit messages
 ![Home Page with embedded Public Artwork](wireframes/home_page_02.png)
 
 ### Users choose which Artwork Version they want
@@ -133,7 +150,7 @@ Below are the wireframe design for both the
 - The Interactive Art Engine
 - The persistent state interactive Artwork 
 
-## The Interactive Art Engine [The System]
+## The Interactive Art Engine [Tech product]
 
 +------------------------------------------------------+
 | Interactive Art Engine                               |
@@ -169,7 +186,7 @@ Below are the wireframe design for both the
 | - Links: About, Contact, GitHub                      |
 +------------------------------------------------------+
 
-## Wireframe Design for the interactive artwork [The Product]
+## Wireframe Design for artwork [Art as a Product]
 Here is the core user shared interaction 
 
 ### User Input Message (Desktop)
