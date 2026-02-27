@@ -523,10 +523,11 @@ Configure `.env` for API keys, database credentials, and environment variables.
 ## Future Enhancements
 
 * Multi-artwork licensing Engine
+* Payment System [Stripe]
 * Engagement analytics dashboard
 * AI-assisted moderation
 * Multi-language support
-* Mobile / kiosk deployment optimization
+* Mobile deployment optimization
 
 ---
 
