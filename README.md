@@ -84,7 +84,7 @@ I used Agile development with Epic Stories and used MOSCOW priorties to help bui
 
 ### Users get their own unique instance of an Interactive Artwork that they can evolve
 Use cases: 
-- Any user can can invite family, friends to uniquely particpate in this shared private experience over time. 
+- Any user can can invite family, friends to uniquely particpate in this shared experience over time. 
 - A Venue owner, organisation or brand can engage and invite their customers, visitors to particapte in a shared experience. 
 - Event Organisers can buy a license and invite attendees to have shared experiences before, during and after events. 
 ![Artwork Instance](readme_images/artwork_instance.png)
